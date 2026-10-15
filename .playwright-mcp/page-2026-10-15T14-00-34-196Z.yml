@@ -1,0 +1,35 @@
+- generic [ref=f15e3]:
+  - banner [ref=f15e4]:
+    - generic [ref=f15e5]:
+      - link "csspoll." [ref=f15e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f15e7]: apuntes de grupo, sin registros
+  - main [ref=f15e8]:
+    - paragraph [ref=f15e13]: Panel de administración
+    - generic [ref=f15e14]:
+      - heading "Vóley jueves (prueba)" [level=1] [ref=f15e15]
+      - generic [ref=f15e16]: Abierta
+    - generic [ref=f15e17]:
+      - button "Cerrar inscripciones" [ref=f15e18]
+      - link "Ver pública" [ref=f15e19] [cursor=pointer]:
+        - /url: /p/87957a927bef
+      - button "Copiar enlace" [ref=f15e20]
+      - button "Editar" [ref=f15e21]
+      - button "Duplicar (+7 días)" [ref=f15e22]
+    - generic [ref=f15e23]:
+      - heading "Eventos" [level=2] [ref=f15e24]
+      - generic [ref=f15e25]: "1"
+    - generic [ref=f15e26]:
+      - generic [ref=f15e27]:
+        - generic [ref=f15e28]:
+          - generic [ref=f15e29]:
+            - paragraph [ref=f15e30]: Jueves, 22 oct
+            - generic [ref=f15e31]:
+              - generic [ref=f15e32]: 20:00
+              - generic [ref=f15e33]: Entreno A
+          - generic [ref=f15e34]: 0/16
+        - paragraph [ref=f15e37]: Nadie apuntado todavía
+        - generic [ref=f15e38]:
+          - button "Editar" [ref=f15e39]
+          - button "Eliminar" [disabled] [ref=f15e40]
+      - button "+ Añadir evento" [ref=f15e41]

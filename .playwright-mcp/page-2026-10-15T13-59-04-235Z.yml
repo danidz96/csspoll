@@ -1,0 +1,46 @@
+- generic [ref=f11e3]:
+  - banner [ref=f11e4]:
+    - generic [ref=f11e5]:
+      - link "csspoll." [ref=f11e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f11e7]: apuntes de grupo, sin registros
+  - main [ref=f11e8]:
+    - generic [ref=f11e13]:
+      - heading "Encuesta QA (temporal)" [level=1] [ref=f11e14]
+      - paragraph [ref=f11e15]: Prueba QA end-to-end
+      - generic [ref=f11e16]: Las inscripciones están cerradas. Habla con quien organiza si necesitas cambios.
+    - generic [ref=f11e17]:
+      - generic [ref=f11e18]:
+        - generic [ref=f11e19]:
+          - generic [ref=f11e20]:
+            - paragraph [ref=f11e21]: Jueves, 15 oct
+            - generic [ref=f11e22]:
+              - generic [ref=f11e23]: 20:00
+              - generic [ref=f11e24]: Entreno A
+          - generic [ref=f11e25]: 1/2
+        - generic [ref=f11e28]: Bruno QA
+      - generic [ref=f11e30]:
+        - generic [ref=f11e31]:
+          - generic [ref=f11e32]:
+            - paragraph [ref=f11e33]: Jueves, 15 oct
+            - generic [ref=f11e34]:
+              - generic [ref=f11e35]: 21:30
+              - generic [ref=f11e36]: Entreno B
+          - generic [ref=f11e37]: 1/2
+        - generic [ref=f11e40]: Zoe QA
+      - generic [ref=f11e42]:
+        - generic [ref=f11e43]:
+          - generic [ref=f11e44]:
+            - paragraph [ref=f11e45]: Jueves, 15 oct
+            - generic [ref=f11e46]:
+              - generic [ref=f11e47]: 23:00
+              - generic [ref=f11e48]: Entreno C
+          - generic [ref=f11e49]: Sin límite
+        - generic [ref=f11e50]:
+          - generic [ref=f11e51]: Yago QA
+          - generic [ref=f11e52]: Xavi QA
+          - generic [ref=f11e53]: Uxia QA
+          - generic [ref=f11e54]: Victor QA
+          - generic [ref=f11e55]: Wanda QA
+          - generic [ref=f11e56]: Ana Renombrada
+    - paragraph [ref=f11e57]: Esta página se actualiza sola cada pocos segundos.

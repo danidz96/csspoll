@@ -1,0 +1,62 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "csspoll." [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]: apuntes de grupo, sin registros
+  - main [ref=e8]:
+    - paragraph [ref=e13]: Panel de administración
+    - generic [ref=e14]:
+      - heading "Encuesta QA editada" [level=1] [ref=e15]
+      - generic [ref=e16]: Abierta
+    - paragraph [ref=e17]: Desc editada por QA
+    - generic [ref=e18]:
+      - button "Cerrar inscripciones" [ref=e19]
+      - link "Ver pública" [ref=e20] [cursor=pointer]:
+        - /url: /p/1f3dd3259487
+      - button "Copiar enlace" [ref=e21]
+      - button "Editar" [ref=e22]
+      - button "Duplicar (+7 días)" [ref=e23]
+    - generic [ref=e24]:
+      - heading "Eventos" [level=2] [ref=e25]
+      - generic [ref=e26]: "3"
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - paragraph [ref=e31]: Jueves, 22 oct
+            - generic [ref=e32]:
+              - generic [ref=e33]: 20:30
+              - generic [ref=e34]: Entreno A2
+          - generic [ref=e35]: 0/3
+        - paragraph [ref=e38]: Nadie apuntado todavía
+        - generic [ref=e39]:
+          - button "Editar" [ref=e40]
+          - button "Eliminar" [ref=e41]
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - paragraph [ref=e45]: Jueves, 22 oct
+            - generic [ref=e46]:
+              - generic [ref=e47]: 21:30
+              - generic [ref=e48]: Entreno B
+          - generic [ref=e49]: 1/2
+        - generic [ref=e53]:
+          - text: Doble QA
+          - button "✕" [ref=e54]
+        - generic [ref=e55]:
+          - button "Editar" [ref=e56]
+          - button "Eliminar" [ref=e57]
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: Jueves, 22 oct
+            - generic [ref=e62]:
+              - generic [ref=e63]: 23:00
+              - generic [ref=e64]: Entreno C
+          - generic [ref=e65]: Sin límite
+        - paragraph [ref=e67]: Nadie apuntado todavía
+        - generic [ref=e68]:
+          - button "Editar" [ref=e69]
+          - button "Eliminar" [ref=e70]
+      - button "+ Añadir evento" [ref=e71]

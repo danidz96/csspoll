@@ -1,0 +1,59 @@
+- generic [ref=f8e3]:
+  - banner [ref=f8e4]:
+    - generic [ref=f8e5]:
+      - link "csspoll." [ref=f8e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f8e7]: apuntes de grupo, sin registros
+  - main [ref=f8e8]:
+    - generic [ref=f8e13]:
+      - heading "Encuesta QA (temporal)" [level=1] [ref=f8e14]
+      - paragraph [ref=f8e15]: Prueba QA end-to-end
+    - generic [ref=f8e16]:
+      - generic [ref=f8e17]:
+        - generic [ref=f8e18]:
+          - generic [ref=f8e19]:
+            - paragraph [ref=f8e20]: Jueves, 15 oct
+            - generic [ref=f8e21]:
+              - generic [ref=f8e22]: 20:00
+              - generic [ref=f8e23]: Entreno A
+          - generic [ref=f8e24]: 1/2
+        - generic [ref=f8e27]: Bruno QA
+        - generic [ref=f8e29] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f8e30]
+          - generic [ref=f8e31]: Apuntarme aquí
+      - generic [ref=f8e32]:
+        - generic [ref=f8e33]:
+          - generic [ref=f8e34]:
+            - paragraph [ref=f8e35]: Jueves, 15 oct
+            - generic [ref=f8e36]:
+              - generic [ref=f8e37]: 21:30
+              - generic [ref=f8e38]: Entreno B
+          - generic [ref=f8e39]: 1/2
+        - generic [ref=f8e42]: Zoe QA
+        - generic [ref=f8e76] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f8e77]
+          - generic [ref=f8e78]: Apuntarme aquí
+      - generic [ref=f8e48]:
+        - generic [ref=f8e49]:
+          - generic [ref=f8e50]:
+            - paragraph [ref=f8e51]: Jueves, 15 oct
+            - generic [ref=f8e52]:
+              - generic [ref=f8e53]: 23:00
+              - generic [ref=f8e54]: Entreno C
+          - generic [ref=f8e55]: Sin límite
+        - generic [ref=f8e56]:
+          - generic [ref=f8e57]: Yago QA
+          - generic [ref=f8e58]: Xavi QA
+          - generic [ref=f8e59]: Uxia QA
+          - generic [ref=f8e60]: Victor QA
+          - generic [ref=f8e61]: Wanda QA
+        - generic [ref=f8e62] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f8e63]
+          - generic [ref=f8e64]: Apuntarme aquí
+    - paragraph [ref=f8e65]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=f8e67]:
+      - generic [ref=f8e68]:
+        - textbox "Tu nombre" [ref=f8e69]: Ana QA
+        - button "Apuntarme" [disabled] [ref=f8e79]
+      - paragraph [ref=f8e71]: Marca los eventos a los que vas
+    - generic [ref=f8e80]: Te hemos quitado de todos los eventos

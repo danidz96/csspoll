@@ -1,0 +1,8 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "csspoll." [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]: apuntes de grupo, sin registros
+  - main [ref=e8]:
+    - generic [ref=e9]: Cargando panel…

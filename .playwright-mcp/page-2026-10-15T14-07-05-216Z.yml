@@ -1,0 +1,39 @@
+- generic [ref=f4e3]:
+  - banner [ref=f4e4]:
+    - generic [ref=f4e5]:
+      - link "csspoll." [ref=f4e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f4e7]: apuntes de grupo, sin registros
+  - main [ref=f4e8]:
+    - heading "Crea la encuesta de apuntes" [level=1] [ref=f4e9]
+    - paragraph [ref=f4e10]: Añade los eventos del día, con o sin límite de plazas. Tú solo compartes un enlace.
+    - generic [ref=f4e11]:
+      - generic [ref=f4e12]:
+        - generic [ref=f4e13]: Título
+        - textbox "Título" [active] [ref=f4e14]:
+          - /placeholder: Vóley del jueves
+      - generic [ref=f4e15]:
+        - generic [ref=f4e16]: Descripción (opcional)
+        - textbox "Descripción (opcional)" [ref=f4e17]:
+          - /placeholder: Llevad balón, cancha 2…
+      - generic [ref=f4e18]:
+        - generic [ref=f4e19]: Eventos
+        - generic [ref=f4e21]:
+          - textbox "Entreno A" [ref=f4e23]
+          - generic [ref=f4e24]:
+            - generic [ref=f4e25]:
+              - generic [ref=f4e26]: Día
+              - textbox "Día" [ref=f4e27]: 2026-10-15
+            - generic [ref=f4e28]:
+              - generic [ref=f4e29]: Hora
+              - textbox "Hora" [ref=f4e30]
+          - generic [ref=f4e31]:
+            - generic [ref=f4e32] [cursor=pointer]:
+              - checkbox "Sin límite" [ref=f4e33]
+              - text: Sin límite
+            - generic [ref=f4e34]:
+              - text: Plazas
+              - spinbutton "Plazas" [ref=f4e35]: "16"
+        - button "+ Añadir otro evento" [ref=f4e36]
+      - button "Crear encuesta" [ref=f4e37]
+      - paragraph [ref=f4e38]: "Sin registros: quien se apunte solo escribe su nombre."

@@ -1,0 +1,27 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "csspoll." [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]: apuntes de grupo, sin registros
+  - main [ref=e8]:
+    - heading "Vóley jueves (prueba)" [level=1] [ref=e59]
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: Jueves, 15 oct
+          - generic [ref=e65]:
+            - generic [ref=e66]: 20:00
+            - generic [ref=e67]: Entreno A
+        - generic [ref=e68]: 1/16
+      - generic [ref=e70]: Dani
+      - generic [ref=e72] [cursor=pointer]:
+        - checkbox "¡Voy!" [checked] [ref=e82]
+        - generic [ref=e74]: ¡Voy!
+    - paragraph [ref=e75]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - textbox "Tu nombre" [ref=e79]: Dani
+        - button "Apuntarme" [ref=e86]
+      - paragraph [ref=e81]: 1 evento seleccionado
+    - generic [ref=e87]: ¡Apuntado! 🏐

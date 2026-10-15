@@ -1,0 +1,13 @@
+- generic [ref=f20e3]:
+  - banner [ref=f20e4]:
+    - generic [ref=f20e5]:
+      - link "csspoll." [ref=f20e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f20e7]: apuntes de grupo, sin registros
+  - main [ref=f20e8]:
+    - generic [ref=f20e9]:
+      - paragraph [ref=f20e10]: 🏐
+      - heading "Aquí no hay nada" [level=1] [ref=f20e11]
+      - paragraph [ref=f20e12]: El enlace no es válido o la encuesta ya no existe.
+      - link "Crear una encuesta nueva →" [ref=f20e13] [cursor=pointer]:
+        - /url: /

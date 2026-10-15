@@ -1,0 +1,53 @@
+- generic [ref=f23e3]:
+  - banner [ref=f23e4]:
+    - generic [ref=f23e5]:
+      - link "csspoll." [ref=f23e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f23e7]: apuntes de grupo, sin registros
+  - main [ref=f23e8]:
+    - generic [ref=f23e13]:
+      - heading "Encuesta QA editada" [level=1] [ref=f23e14]
+      - paragraph [ref=f23e15]: Desc editada por QA
+    - generic [ref=f23e16]:
+      - generic [ref=f23e17]:
+        - generic [ref=f23e18]:
+          - generic [ref=f23e19]:
+            - paragraph [ref=f23e20]: Jueves, 22 oct
+            - generic [ref=f23e21]:
+              - generic [ref=f23e22]: 20:30
+              - generic [ref=f23e23]: Entreno A2
+          - generic [ref=f23e24]: 0/3
+        - paragraph [ref=f23e27]: Nadie apuntado todavía
+        - generic [ref=f23e68] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f23e69]
+          - generic [ref=f23e70]: Apuntarme aquí
+      - generic [ref=f23e31]:
+        - generic [ref=f23e32]:
+          - generic [ref=f23e33]:
+            - paragraph [ref=f23e34]: Jueves, 22 oct
+            - generic [ref=f23e35]:
+              - generic [ref=f23e36]: 21:30
+              - generic [ref=f23e37]: Entreno B
+          - generic [ref=f23e38]: 1/2
+        - generic [ref=f23e40]: Doble QA
+        - generic [ref=f23e71] [cursor=pointer]:
+          - checkbox "¡Voy!" [checked] [ref=f23e72]
+          - generic [ref=f23e73]: ¡Voy!
+      - generic [ref=f23e45]:
+        - generic [ref=f23e46]:
+          - generic [ref=f23e47]:
+            - paragraph [ref=f23e48]: Jueves, 22 oct
+            - generic [ref=f23e49]:
+              - generic [ref=f23e50]: 23:00
+              - generic [ref=f23e51]: Entreno C
+          - generic [ref=f23e52]: Sin límite
+        - paragraph [ref=f23e54]: Nadie apuntado todavía
+        - generic [ref=f23e74] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f23e75]
+          - generic [ref=f23e76]: Apuntarme aquí
+    - paragraph [ref=f23e58]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=f23e78]:
+      - generic [ref=f23e79]:
+        - textbox "Tu nombre" [ref=f23e80]: Doble QA
+        - button "Apuntarme" [ref=f23e81]
+      - paragraph [ref=f23e82]: 1 evento seleccionado

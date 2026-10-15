@@ -1,0 +1,54 @@
+- generic [ref=f4e3]:
+  - banner [ref=f4e4]:
+    - generic [ref=f4e5]:
+      - link "csspoll." [ref=f4e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f4e7]: apuntes de grupo, sin registros
+  - main [ref=f4e8]:
+    - generic [ref=f4e13]:
+      - heading "Encuesta QA (temporal)" [level=1] [ref=f4e14]
+      - paragraph [ref=f4e15]: Prueba QA end-to-end
+    - generic [ref=f4e16]:
+      - generic [ref=f4e17]:
+        - generic [ref=f4e18]:
+          - generic [ref=f4e19]:
+            - paragraph [ref=f4e20]: Jueves, 15 oct
+            - generic [ref=f4e21]:
+              - generic [ref=f4e22]: 20:00
+              - generic [ref=f4e23]: Entreno A
+          - generic [ref=f4e24]: 1/2
+        - generic [ref=f4e26]: Ana QA
+        - generic [ref=f4e28] [cursor=pointer]:
+          - checkbox "¡Voy!" [checked] [ref=f4e65]
+          - generic [ref=f4e30]: ¡Voy!
+      - generic [ref=f4e31]:
+        - generic [ref=f4e32]:
+          - generic [ref=f4e33]:
+            - paragraph [ref=f4e34]: Jueves, 15 oct
+            - generic [ref=f4e35]:
+              - generic [ref=f4e36]: 21:30
+              - generic [ref=f4e37]: Entreno B
+          - generic [ref=f4e38]: 0/2
+        - paragraph [ref=f4e41]: Nadie apuntado todavía
+        - generic [ref=f4e42] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f4e43]
+          - generic [ref=f4e44]: Apuntarme aquí
+      - generic [ref=f4e45]:
+        - generic [ref=f4e46]:
+          - generic [ref=f4e47]:
+            - paragraph [ref=f4e48]: Jueves, 15 oct
+            - generic [ref=f4e49]:
+              - generic [ref=f4e50]: 23:00
+              - generic [ref=f4e51]: Entreno C
+          - generic [ref=f4e52]: Sin límite
+        - paragraph [ref=f4e54]: Nadie apuntado todavía
+        - generic [ref=f4e55] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f4e56]
+          - generic [ref=f4e57]: Apuntarme aquí
+    - paragraph [ref=f4e58]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=f4e60]:
+      - generic [ref=f4e61]:
+        - textbox "Tu nombre" [ref=f4e62]: Ana QA
+        - button "Apuntarme" [ref=f4e63]
+      - paragraph [ref=f4e64]: 1 evento seleccionado
+    - generic [ref=f4e68]: ¡Apuntado! 🏐

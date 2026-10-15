@@ -1,0 +1,60 @@
+- generic [ref=f17e3]:
+  - banner [ref=f17e4]:
+    - generic [ref=f17e5]:
+      - link "csspoll." [ref=f17e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f17e7]: apuntes de grupo, sin registros
+  - main [ref=f17e8]:
+    - paragraph [ref=f17e13]: Panel de administración
+    - generic [ref=f17e14]:
+      - heading "Encuesta QA editada" [level=1] [ref=f17e15]
+      - generic [ref=f17e16]: Abierta
+    - paragraph [ref=f17e17]: Desc editada por QA
+    - generic [ref=f17e18]:
+      - button "Cerrar inscripciones" [ref=f17e19]
+      - link "Ver pública" [ref=f17e20] [cursor=pointer]:
+        - /url: /p/1f3dd3259487
+      - button "Copiar enlace" [ref=f17e21]
+      - button "Editar" [ref=f17e22]
+      - button "Duplicar (+7 días)" [ref=f17e23]
+    - generic [ref=f17e24]:
+      - heading "Eventos" [level=2] [ref=f17e25]
+      - generic [ref=f17e26]: "3"
+    - generic [ref=f17e27]:
+      - generic [ref=f17e28]:
+        - generic [ref=f17e29]:
+          - generic [ref=f17e30]:
+            - paragraph [ref=f17e31]: Jueves, 22 oct
+            - generic [ref=f17e32]:
+              - generic [ref=f17e33]: 20:30
+              - generic [ref=f17e34]: Entreno A2
+          - generic [ref=f17e35]: 0/3
+        - paragraph [ref=f17e38]: Nadie apuntado todavía
+        - generic [ref=f17e39]:
+          - button "Editar" [ref=f17e40]
+          - button "Eliminar" [ref=f17e41]
+      - generic [ref=f17e42]:
+        - generic [ref=f17e43]:
+          - generic [ref=f17e44]:
+            - paragraph [ref=f17e45]: Jueves, 22 oct
+            - generic [ref=f17e46]:
+              - generic [ref=f17e47]: 21:30
+              - generic [ref=f17e48]: Entreno B
+          - generic [ref=f17e49]: 0/2
+        - paragraph [ref=f17e52]: Nadie apuntado todavía
+        - generic [ref=f17e53]:
+          - button "Editar" [ref=f17e54]
+          - button "Eliminar" [ref=f17e55]
+      - generic [ref=f17e56]:
+        - generic [ref=f17e57]:
+          - generic [ref=f17e58]:
+            - paragraph [ref=f17e59]: Jueves, 22 oct
+            - generic [ref=f17e60]:
+              - generic [ref=f17e61]: 23:00
+              - generic [ref=f17e62]: Entreno C
+          - generic [ref=f17e63]: Sin límite
+        - paragraph [ref=f17e65]: Nadie apuntado todavía
+        - generic [ref=f17e66]:
+          - button "Editar" [ref=f17e67]
+          - button "Eliminar" [ref=f17e68]
+      - button "+ Añadir evento" [ref=f17e69]

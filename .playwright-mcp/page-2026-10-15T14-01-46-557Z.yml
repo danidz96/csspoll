@@ -1,0 +1,11 @@
+- generic [ref=f19e3]:
+  - banner [ref=f19e4]:
+    - generic [ref=f19e5]:
+      - link "csspoll." [ref=f19e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f19e7]: apuntes de grupo, sin registros
+  - main [ref=f19e8]:
+    - generic [ref=f19e13]:
+      - paragraph [ref=f19e14]: 🔒
+      - heading "Enlace de administración no válido" [level=1] [ref=f19e15]
+      - paragraph [ref=f19e16]: Comprueba que has copiado el enlace completo. Sin él no se puede gestionar la encuesta.

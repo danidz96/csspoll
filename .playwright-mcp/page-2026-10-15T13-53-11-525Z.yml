@@ -1,0 +1,27 @@
+- generic [ref=f3e3]:
+  - banner [ref=f3e4]:
+    - generic [ref=f3e5]:
+      - link "csspoll." [ref=f3e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e7]: apuntes de grupo, sin registros
+  - main [ref=f3e8]:
+    - generic [ref=f3e73]:
+      - heading "¡Encuesta creada! 🎉" [level=1] [ref=f3e74]
+      - paragraph [ref=f3e75]: Manda el primer enlace al grupo y guarda el segundo solo para ti.
+      - generic [ref=f3e76]:
+        - generic [ref=f3e77]:
+          - paragraph [ref=f3e78]: Enlace para el grupo
+          - paragraph [ref=f3e79]: http://localhost:5173/p/db4147d5156c
+          - generic [ref=f3e80]:
+            - button "Copiar" [ref=f3e81]
+            - link "Compartir por WhatsApp" [ref=f3e82] [cursor=pointer]:
+              - /url: https://wa.me/?text=Encuesta%20QA%20(temporal)%20%E2%80%94%20ap%C3%BAntate%20aqu%C3%AD%3A%20http%3A%2F%2Flocalhost%3A5173%2Fp%2Fdb4147d5156c
+        - generic [ref=f3e83]:
+          - paragraph [ref=f3e84]: Tu enlace de administración
+          - paragraph [ref=f3e85]: http://localhost:5173/admin/daaff414578d46509794b5586a104fe0
+          - paragraph [ref=f3e86]: "Guárdalo: con él editas, cierras o duplicas la encuesta. No lo compartas."
+          - button "Copiar" [ref=f3e88]
+      - generic [ref=f3e89]:
+        - link "Ver la encuesta" [ref=f3e90] [cursor=pointer]:
+          - /url: /p/db4147d5156c
+        - button "Crear otra" [ref=f3e91]

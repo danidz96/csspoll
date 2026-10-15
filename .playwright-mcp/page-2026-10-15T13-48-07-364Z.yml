@@ -1,0 +1,27 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "csspoll." [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]: apuntes de grupo, sin registros
+  - main [ref=e8]:
+    - generic [ref=e39]:
+      - heading "¡Encuesta creada! 🎉" [level=1] [ref=e40]
+      - paragraph [ref=e41]: Manda el primer enlace al grupo y guarda el segundo solo para ti.
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: Enlace para el grupo
+          - paragraph [ref=e45]: http://localhost:5173/p/5835d8c2e48c
+          - generic [ref=e46]:
+            - button "Copiar" [ref=e47]
+            - link "Compartir por WhatsApp" [ref=e48] [cursor=pointer]:
+              - /url: https://wa.me/?text=V%C3%B3ley%20jueves%20(prueba)%20%E2%80%94%20ap%C3%BAntate%20aqu%C3%AD%3A%20http%3A%2F%2Flocalhost%3A5173%2Fp%2F5835d8c2e48c
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Tu enlace de administración
+          - paragraph [ref=e51]: http://localhost:5173/admin/06a9d1d74ffe4a61bd40c9de508101ec
+          - paragraph [ref=e52]: "Guárdalo: con él editas, cierras o duplicas la encuesta. No lo compartas."
+          - button "Copiar" [ref=e54]
+      - generic [ref=e55]:
+        - link "Ver la encuesta" [ref=e56] [cursor=pointer]:
+          - /url: /p/5835d8c2e48c
+        - button "Crear otra" [ref=e57]

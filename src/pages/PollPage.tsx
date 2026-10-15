@@ -54,6 +54,7 @@ export default function PollPage() {
       return next
     })
     setDirty(true)
+    setError(null)
   }
 
   async function submit() {
@@ -109,7 +110,7 @@ export default function PollPage() {
   const label = submitting
     ? 'Guardando…'
     : selected.size > 0
-      ? dirty
+      ? hadSignups && dirty
         ? 'Guardar cambios'
         : 'Apuntarme'
       : hadSignups
@@ -175,7 +176,10 @@ export default function PollPage() {
             <div className="flex gap-2">
               <Input
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value)
+                  setError(null)
+                }}
                 placeholder="Tu nombre"
                 maxLength={40}
                 autoComplete="name"

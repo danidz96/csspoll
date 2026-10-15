@@ -1,0 +1,82 @@
+- generic [ref=f10e3]:
+  - banner [ref=f10e4]:
+    - generic [ref=f10e5]:
+      - link "csspoll." [ref=f10e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f10e7]: apuntes de grupo, sin registros
+  - main [ref=f10e8]:
+    - paragraph [ref=f10e13]: Panel de administración
+    - generic [ref=f10e14]:
+      - heading "Encuesta QA (temporal)" [level=1] [ref=f10e15]
+      - generic [ref=f10e16]: Abierta
+    - paragraph [ref=f10e17]: Prueba QA end-to-end
+    - generic [ref=f10e18]:
+      - button "Cerrar inscripciones" [ref=f10e19]
+      - link "Ver pública" [ref=f10e20] [cursor=pointer]:
+        - /url: /p/db4147d5156c
+      - button "Copiar enlace" [ref=f10e21]
+      - button "Editar" [ref=f10e22]
+      - button "Duplicar (+7 días)" [ref=f10e23]
+    - generic [ref=f10e24]:
+      - heading "Eventos" [level=2] [ref=f10e25]
+      - generic [ref=f10e26]: "3"
+    - generic [ref=f10e27]:
+      - generic [ref=f10e28]:
+        - generic [ref=f10e29]:
+          - generic [ref=f10e30]:
+            - paragraph [ref=f10e31]: Jueves, 15 oct
+            - generic [ref=f10e32]:
+              - generic [ref=f10e33]: 20:00
+              - generic [ref=f10e34]: Entreno A
+          - generic [ref=f10e35]: 1/2
+        - generic [ref=f10e39]:
+          - text: Bruno QA
+          - button "✕" [ref=f10e40]
+        - generic [ref=f10e41]:
+          - button "Editar" [ref=f10e42]
+          - button "Eliminar" [ref=f10e43]
+      - generic [ref=f10e44]:
+        - generic [ref=f10e45]:
+          - generic [ref=f10e46]:
+            - paragraph [ref=f10e47]: Jueves, 15 oct
+            - generic [ref=f10e48]:
+              - generic [ref=f10e49]: 21:30
+              - generic [ref=f10e50]: Entreno B
+          - generic [ref=f10e51]: 1/2
+        - generic [ref=f10e55]:
+          - text: Zoe QA
+          - button "✕" [ref=f10e56]
+        - generic [ref=f10e57]:
+          - button "Editar" [ref=f10e58]
+          - button "Eliminar" [ref=f10e59]
+      - generic [ref=f10e60]:
+        - generic [ref=f10e61]:
+          - generic [ref=f10e62]:
+            - paragraph [ref=f10e63]: Jueves, 15 oct
+            - generic [ref=f10e64]:
+              - generic [ref=f10e65]: 23:00
+              - generic [ref=f10e66]: Entreno C
+          - generic [ref=f10e67]: Sin límite
+        - generic [ref=f10e68]:
+          - generic [ref=f10e69]:
+            - text: Yago QA
+            - button "✕" [ref=f10e70]
+          - generic [ref=f10e71]:
+            - text: Xavi QA
+            - button "✕" [ref=f10e72]
+          - generic [ref=f10e73]:
+            - text: Uxia QA
+            - button "✕" [ref=f10e74]
+          - generic [ref=f10e75]:
+            - text: Victor QA
+            - button "✕" [ref=f10e76]
+          - generic [ref=f10e77]:
+            - text: Wanda QA
+            - button "✕" [ref=f10e78]
+          - generic [ref=f10e79]:
+            - text: Ana Renombrada
+            - button "✕" [ref=f10e80]
+        - generic [ref=f10e81]:
+          - button "Editar" [ref=f10e82]
+          - button "Eliminar" [ref=f10e83]
+      - button "+ Añadir evento" [ref=f10e84]

@@ -1,0 +1,137 @@
+- generic [ref=f10e3]:
+  - banner [ref=f10e4]:
+    - generic [ref=f10e5]:
+      - link "csspoll." [ref=f10e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f10e7]: apuntes de grupo, sin registros
+  - main [ref=f10e8]:
+    - generic [ref=f10e13]:
+      - heading "Encuesta QA editada" [level=1] [ref=f10e14]
+      - paragraph [ref=f10e15]: Desc editada por QA
+    - generic [ref=f10e16]:
+      - generic [ref=f10e17]:
+        - generic [ref=f10e18]:
+          - generic [ref=f10e19]:
+            - paragraph [ref=f10e20]: Jueves, 22 oct
+            - generic [ref=f10e21]:
+              - generic [ref=f10e22]: 20:30
+              - generic [ref=f10e23]: Entreno A2
+          - generic [ref=f10e24]: 0/3
+        - paragraph [ref=f10e27]: Nadie apuntado todavía
+        - generic [ref=f10e28] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e29]
+          - generic [ref=f10e30]: Apuntarme aquí
+      - generic [ref=f10e31]:
+        - generic [ref=f10e32]:
+          - generic [ref=f10e33]:
+            - paragraph [ref=f10e34]: Jueves, 22 oct
+            - generic [ref=f10e35]:
+              - generic [ref=f10e36]: 21:30
+              - generic [ref=f10e37]: Entreno B
+          - generic [ref=f10e38]: 1/2
+        - generic [ref=f10e41]: Doble QA
+        - generic [ref=f10e43] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e44]
+          - generic [ref=f10e45]: Apuntarme aquí
+      - generic [ref=f10e46]:
+        - generic [ref=f10e47]:
+          - generic [ref=f10e48]:
+            - paragraph [ref=f10e49]: Jueves, 22 oct
+            - generic [ref=f10e50]:
+              - generic [ref=f10e51]: 23:00
+              - generic [ref=f10e52]: Entreno C
+          - generic [ref=f10e53]: Sin límite
+        - paragraph [ref=f10e55]: Nadie apuntado todavía
+        - generic [ref=f10e56] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e57]
+          - generic [ref=f10e58]: Apuntarme aquí
+      - generic [ref=f10e59]:
+        - generic [ref=f10e60]:
+          - generic [ref=f10e61]:
+            - paragraph [ref=f10e62]: Jueves, 15 oct
+            - generic [ref=f10e63]:
+              - generic [ref=f10e64]: 22:00
+              - generic [ref=f10e65]: Evento Doble
+          - generic [ref=f10e66]: 0/16
+        - paragraph [ref=f10e69]: Nadie apuntado todavía
+        - generic [ref=f10e70] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e71]
+          - generic [ref=f10e72]: Apuntarme aquí
+      - generic [ref=f10e73]:
+        - generic [ref=f10e74]:
+          - generic [ref=f10e75]:
+            - paragraph [ref=f10e76]: Jueves, 15 oct
+            - generic [ref=f10e77]:
+              - generic [ref=f10e78]: 22:00
+              - generic [ref=f10e79]: Evento Doble
+          - generic [ref=f10e80]: 0/16
+        - paragraph [ref=f10e83]: Nadie apuntado todavía
+        - generic [ref=f10e84] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e85]
+          - generic [ref=f10e86]: Apuntarme aquí
+      - generic [ref=f10e87]:
+        - generic [ref=f10e88]:
+          - generic [ref=f10e89]:
+            - paragraph [ref=f10e90]: Jueves, 15 oct
+            - generic [ref=f10e91]:
+              - generic [ref=f10e92]: 22:30
+              - generic [ref=f10e93]: Evento Triple
+          - generic [ref=f10e94]: 0/16
+        - paragraph [ref=f10e97]: Nadie apuntado todavía
+        - generic [ref=f10e98] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e99]
+          - generic [ref=f10e100]: Apuntarme aquí
+      - generic [ref=f10e101]:
+        - generic [ref=f10e102]:
+          - generic [ref=f10e103]:
+            - paragraph [ref=f10e104]: Jueves, 15 oct
+            - generic [ref=f10e105]:
+              - generic [ref=f10e106]: 22:30
+              - generic [ref=f10e107]: Evento Triple
+          - generic [ref=f10e108]: 0/16
+        - paragraph [ref=f10e111]: Nadie apuntado todavía
+        - generic [ref=f10e112] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e113]
+          - generic [ref=f10e114]: Apuntarme aquí
+      - generic [ref=f10e115]:
+        - generic [ref=f10e116]:
+          - generic [ref=f10e117]:
+            - paragraph [ref=f10e118]: Jueves, 15 oct
+            - generic [ref=f10e119]:
+              - generic [ref=f10e120]: 23:30
+              - generic [ref=f10e121]: Evento Cinco
+          - generic [ref=f10e122]: 0/16
+        - paragraph [ref=f10e125]: Nadie apuntado todavía
+        - generic [ref=f10e126] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e127]
+          - generic [ref=f10e128]: Apuntarme aquí
+      - generic [ref=f10e129]:
+        - generic [ref=f10e130]:
+          - generic [ref=f10e131]:
+            - paragraph [ref=f10e132]: Jueves, 15 oct
+            - generic [ref=f10e133]:
+              - generic [ref=f10e134]: 23:30
+              - generic [ref=f10e135]: Evento Cinco
+          - generic [ref=f10e136]: 0/16
+        - paragraph [ref=f10e139]: Nadie apuntado todavía
+        - generic [ref=f10e140] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e141]
+          - generic [ref=f10e142]: Apuntarme aquí
+      - generic [ref=f10e143]:
+        - generic [ref=f10e144]:
+          - generic [ref=f10e145]:
+            - paragraph [ref=f10e146]: Jueves, 15 oct
+            - generic [ref=f10e147]:
+              - generic [ref=f10e148]: 23:45
+              - generic [ref=f10e149]: Evento Siete
+          - generic [ref=f10e150]: 0/7
+        - paragraph [ref=f10e153]: Nadie apuntado todavía
+        - generic [ref=f10e154] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f10e155]
+          - generic [ref=f10e156]: Apuntarme aquí
+    - paragraph [ref=f10e157]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=f10e159]:
+      - generic [ref=f10e160]:
+        - textbox "Tu nombre" [ref=f10e161]
+        - button "Apuntarme" [disabled] [ref=f10e162]
+      - paragraph [ref=f10e163]: Marca los eventos a los que vas

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { EventCard } from '../components/EventCard'
 import {
@@ -27,7 +27,7 @@ function EventForm({
   onCancel,
 }: {
   initial: { name: string; date: string; time: string; capacity: string; unlimited: boolean }
-  onSave: (v: EventFormValues) => void
+  onSave: (v: EventFormValues) => Promise<void> | void
   onCancel: () => void
 }) {
   const [name, setName] = useState(initial.name)
@@ -35,6 +35,9 @@ function EventForm({
   const [time, setTime] = useState(initial.time.slice(0, 5))
   const [unlimited, setUnlimited] = useState(initial.unlimited)
   const [capacity, setCapacity] = useState(initial.capacity)
+  const [saving, setSaving] = useState(false)
+  // Candado síncrono: evita dobles envíos si se hace doble clic antes de que React pinte el botón deshabilitado.
+  const savingRef = useRef(false)
 
   const valid =
     name.trim() !== '' && date !== '' && time !== '' && (unlimited || (/^\d{1,4}$/.test(capacity) && Number(capacity) > 0))
@@ -82,10 +85,20 @@ function EventForm({
       <div className="mt-4 flex gap-2">
         <Button
           type="button"
-          disabled={!valid}
-          onClick={() => onSave({ name: name.trim(), date, time, capacity: unlimited ? null : Number(capacity) })}
+          disabled={!valid || saving}
+          onClick={async () => {
+            if (savingRef.current) return
+            savingRef.current = true
+            setSaving(true)
+            try {
+              await onSave({ name: name.trim(), date, time, capacity: unlimited ? null : Number(capacity) })
+            } finally {
+              savingRef.current = false
+              setSaving(false)
+            }
+          }}
         >
-          Guardar
+          {saving ? 'Guardando…' : 'Guardar'}
         </Button>
         <SecondaryButton type="button" onClick={onCancel}>
           Cancelar
@@ -102,6 +115,8 @@ export default function AdminPage() {
   const [poll, setPoll] = useState<Poll | null | undefined>(undefined)
   const [toast, setToast] = useState<string | null>(null)
   const [dup, setDup] = useState<{ slug: string; admin_token: string } | null>(null)
+  const [duplicating, setDuplicating] = useState(false)
+  const dupRef = useRef(false)
   const [editingPoll, setEditingPoll] = useState(false)
   const [pTitle, setPTitle] = useState('')
   const [pDesc, setPDesc] = useState('')
@@ -146,7 +161,10 @@ export default function AdminPage() {
   )
 
   async function duplicate() {
+    if (dupRef.current) return
     if (!window.confirm('¿Duplicar la encuesta con las fechas +7 días? Se crea una nueva, sin apuntes.')) return
+    dupRef.current = true
+    setDuplicating(true)
     try {
       const r = await api.adminDuplicatePoll(tk, 7)
       if (r.ok) {
@@ -157,6 +175,9 @@ export default function AdminPage() {
       }
     } catch {
       flash('No se pudo conectar. Inténtalo de nuevo.')
+    } finally {
+      dupRef.current = false
+      setDuplicating(false)
     }
   }
 
@@ -250,8 +271,8 @@ export default function AdminPage() {
           >
             Editar
           </SecondaryButton>
-          <SecondaryButton type="button" onClick={() => void duplicate()}>
-            Duplicar (+7 días)
+          <SecondaryButton type="button" disabled={duplicating} onClick={() => void duplicate()}>
+            {duplicating ? 'Duplicando…' : 'Duplicar (+7 días)'}
           </SecondaryButton>
         </div>
       )}
@@ -301,7 +322,7 @@ export default function AdminPage() {
                 capacity: event.capacity === null ? '16' : String(event.capacity),
                 unlimited: event.capacity === null,
               }}
-              onSave={(v) => void saveEvent(event.id, v)}
+              onSave={(v) => saveEvent(event.id, v)}
               onCancel={() => setEditingEvent(null)}
             />
           ) : (
@@ -358,7 +379,7 @@ export default function AdminPage() {
               capacity: '16',
               unlimited: false,
             }}
-            onSave={(v) => void saveEvent(null, v)}
+            onSave={(v) => saveEvent(null, v)}
             onCancel={() => setAdding(false)}
           />
         )}

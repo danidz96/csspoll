@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card, Input, Label, LinkButton, LinkRow, SecondaryButton, Textarea, secondaryButtonClass } from '../components/ui'
 import { api, errorMessage, type EventInput } from '../lib/api'
@@ -24,11 +24,23 @@ export default function CreatePage() {
   const [creating, setCreating] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [created, setCreated] = useState<{ slug: string; admin_token: string } | null>(null)
+  // Candado síncrono anti doble-clic (el setState de `creating` no llega a pintarse entre clics rápidos)
+  const creatingRef = useRef(false)
 
   const update = (key: string, patch: Partial<EventDraft>) =>
     setEvents((evs) => evs.map((e) => (e.key === key ? { ...e, ...patch } : e)))
 
   async function submit() {
+    if (creatingRef.current) return
+    creatingRef.current = true
+    try {
+      await submitInner()
+    } finally {
+      creatingRef.current = false
+    }
+  }
+
+  async function submitInner() {
     if (title.trim() === '') {
       setError('Ponle un título a la encuesta.')
       return

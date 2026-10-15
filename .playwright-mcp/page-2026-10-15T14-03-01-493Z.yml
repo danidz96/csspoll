@@ -1,0 +1,53 @@
+- generic [ref=f23e3]:
+  - banner [ref=f23e4]:
+    - generic [ref=f23e5]:
+      - link "csspoll." [ref=f23e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f23e7]: apuntes de grupo, sin registros
+  - main [ref=f23e8]:
+    - generic [ref=f23e13]:
+      - heading "Encuesta QA editada" [level=1] [ref=f23e14]
+      - paragraph [ref=f23e15]: Desc editada por QA
+    - generic [ref=f23e16]:
+      - generic [ref=f23e17]:
+        - generic [ref=f23e18]:
+          - generic [ref=f23e19]:
+            - paragraph [ref=f23e20]: Jueves, 22 oct
+            - generic [ref=f23e21]:
+              - generic [ref=f23e22]: 20:30
+              - generic [ref=f23e23]: Entreno A2
+          - generic [ref=f23e24]: 0/3
+        - paragraph [ref=f23e27]: Nadie apuntado todavía
+        - generic [ref=f23e28] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f23e29]
+          - generic [ref=f23e30]: Apuntarme aquí
+      - generic [ref=f23e31]:
+        - generic [ref=f23e32]:
+          - generic [ref=f23e33]:
+            - paragraph [ref=f23e34]: Jueves, 22 oct
+            - generic [ref=f23e35]:
+              - generic [ref=f23e36]: 21:30
+              - generic [ref=f23e37]: Entreno B
+          - generic [ref=f23e38]: 0/2
+        - paragraph [ref=f23e41]: Nadie apuntado todavía
+        - generic [ref=f23e42] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f23e43]
+          - generic [ref=f23e44]: Apuntarme aquí
+      - generic [ref=f23e45]:
+        - generic [ref=f23e46]:
+          - generic [ref=f23e47]:
+            - paragraph [ref=f23e48]: Jueves, 22 oct
+            - generic [ref=f23e49]:
+              - generic [ref=f23e50]: 23:00
+              - generic [ref=f23e51]: Entreno C
+          - generic [ref=f23e52]: Sin límite
+        - paragraph [ref=f23e54]: Nadie apuntado todavía
+        - generic [ref=f23e55] [cursor=pointer]:
+          - checkbox "Apuntarme aquí" [ref=f23e56]
+          - generic [ref=f23e57]: Apuntarme aquí
+    - paragraph [ref=f23e58]: Esta página se actualiza sola cada pocos segundos.
+    - generic [ref=f23e60]:
+      - generic [ref=f23e61]:
+        - textbox "Tu nombre" [ref=f23e62]
+        - button "Apuntarme" [disabled] [ref=f23e63]
+      - paragraph [ref=f23e64]: Marca los eventos a los que vas
