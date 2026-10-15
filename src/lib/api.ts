@@ -27,6 +27,24 @@ export type Poll = {
 
 export type EventInput = { name: string; date: string; time: string; capacity: number | null }
 
+/** Resumen de una encuesta para la lista del admin (RPC admin_summaries) */
+export type PollSummary = {
+  token: string
+  slug: string
+  title: string
+  closed: boolean
+  /** ISO */
+  created_at: string
+  events: number
+  signups: number
+  /** YYYY-MM-DD de la próxima cita (hoy cuenta); null si ya pasaron todas */
+  next_date: string | null
+  /** HH:MM:SS del primer evento del próximo día */
+  next_time: string | null
+  /** YYYY-MM-DD de la última cita */
+  last_date: string | null
+}
+
 export type CreatedPoll = { ok: true; slug: string; admin_token: string } | { ok: false; error: string }
 export type JoinResult = { ok: true; poll: Poll } | { ok: false; error: string; full?: string[] }
 export type ActionResult = { ok: true } | { ok: false; error: string }
@@ -86,6 +104,8 @@ export const api = {
 
   adminDuplicatePoll: (token: string, shiftDays = 7) =>
     rpc<CreatedPoll>('admin_duplicate_poll', { p_token: token, p_shift_days: shiftDays }),
+
+  adminSummaries: (tokens: string[]) => rpc<PollSummary[]>('admin_summaries', { p_tokens: tokens }),
 }
 
 export function errorMessage(code: string, full?: string[]): string {

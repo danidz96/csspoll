@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import {
   CalendarPlus,
   CheckCircle2,
+  ChevronLeft,
   Circle,
   ExternalLink,
   Lock,
@@ -31,6 +32,7 @@ import {
 } from '../components/ui'
 import { api, errorMessage, type ActionResult, type Poll } from '../lib/api'
 import { defaultEventName, todayISO } from '../lib/format'
+import { savePoll } from '../lib/mypolls'
 import { useTitle } from '../lib/useTitle'
 
 type EventFormValues = { name: string; date: string; time: string; capacity: number | null }
@@ -150,7 +152,10 @@ export default function AdminPage() {
   const load = useCallback(async () => {
     if (!tk) return
     try {
-      setPoll(await api.adminGet(tk))
+      const p = await api.adminGet(tk)
+      setPoll(p)
+      // Al abrir un panel, la encuesta pasa a tu lista de /admin (también en este dispositivo)
+      if (p?.slug) savePoll({ token: tk, slug: p.slug, title: p.title })
     } catch {
       setPoll(null)
     }
@@ -186,12 +191,13 @@ export default function AdminPage() {
 
   async function duplicate() {
     if (dupRef.current) return
-    if (!window.confirm('¿Duplicar la encuesta con las fechas +7 días? Se crea una nueva, sin apuntes.')) return
+    if (!window.confirm('¿Duplicar la encuesta con las fechas +7 días? Se crea una nueva, sin confirmaciones.')) return
     dupRef.current = true
     setDuplicating(true)
     try {
       const r = await api.adminDuplicatePoll(tk, 7)
       if (r.ok) {
+        if (poll) savePoll({ token: r.admin_token, slug: r.slug, title: poll.title })
         setDup({ slug: r.slug, admin_token: r.admin_token })
         flash('Encuesta duplicada')
       } else {
@@ -245,6 +251,13 @@ export default function AdminPage() {
 
   return (
     <>
+      <Link
+        to="/admin"
+        className="mb-3 inline-flex items-center gap-0.5 text-[13px] font-semibold text-ink-soft hover:text-ink"
+      >
+        <ChevronLeft className="size-4" aria-hidden="true" />
+        Tus encuestas
+      </Link>
       <div className="flex flex-wrap items-center gap-2">
         <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">{poll.title}</h1>
         <Badge tone={poll.closed ? 'full' : 'open'}>{poll.closed ? 'Cerrada' : 'Abierta'}</Badge>
@@ -319,7 +332,7 @@ export default function AdminPage() {
               <X className="size-4" />
             </IconButton>
           </div>
-          <p className="mt-1 text-sm text-court-700/90">Mismos horarios, fechas +7 días y sin apuntes. Estos son sus enlaces:</p>
+          <p className="mt-1 text-sm text-court-700/90">Mismos horarios, fechas +7 días y sin confirmaciones. Estos son sus enlaces:</p>
           <div className="mt-3 space-y-2">
             <LinkRow label="Enlace para el grupo" url={`${origin}/p/${dup.slug}`} />
             <LinkRow
@@ -368,7 +381,7 @@ export default function AdminPage() {
                   className="pressable -mr-1 grid size-5 place-items-center rounded-full text-ink-faint hover:bg-red-50 hover:text-red-600"
                   onClick={() => {
                     if (window.confirm(`¿Quitar a ${s.name} de ${event.name}?`)) {
-                      void act(() => api.adminRemoveSignup(tk, s.id), 'Apunte quitado')
+                      void act(() => api.adminRemoveSignup(tk, s.id), 'Confirmación quitada')
                     }
                   }}
                 >
@@ -391,7 +404,7 @@ export default function AdminPage() {
                     disabled={poll.events.length <= 1}
                     title={poll.events.length <= 1 ? 'La encuesta necesita al menos un evento' : undefined}
                     onClick={() => {
-                      if (window.confirm(`¿Eliminar ${event.name}? Se borrarán también sus apuntes.`)) {
+                      if (window.confirm(`¿Eliminar ${event.name}? Se borrarán también sus confirmaciones.`)) {
                         void act(() => api.adminDeleteEvent(tk, event.id), 'Evento eliminado')
                       }
                     }}

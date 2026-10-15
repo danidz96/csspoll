@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Volleyball } from 'lucide-react'
 import AdminPage from './pages/AdminPage'
 import CreatePage from './pages/CreatePage'
+import MyPollsPage from './pages/MyPollsPage'
 import PollPage from './pages/PollPage'
 import { Logo } from './components/ui'
 
@@ -33,6 +34,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<CreatePage />} />
             <Route path="/p/:slug" element={<PollPage />} />
+            <Route path="/admin" element={<MyPollsPage />} />
             <Route path="/admin/:token" element={<AdminPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

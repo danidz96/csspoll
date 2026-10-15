@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Circle, Plus, X } from 'lucide-react'
+import { CheckCircle2, Circle, ClipboardList, Plus, X } from 'lucide-react'
 import {
   Button,
   Card,
@@ -13,9 +13,11 @@ import {
   WhatsAppIcon,
   primaryButtonClass,
   secondaryButtonClass,
+  toolbarButtonClass,
 } from '../components/ui'
 import { api, errorMessage, type EventInput } from '../lib/api'
 import { defaultEventName, todayISO } from '../lib/format'
+import { savedPolls, savePoll } from '../lib/mypolls'
 import { useTitle } from '../lib/useTitle'
 
 type EventDraft = { key: string; name: string; date: string; time: string; capacity: string; unlimited: boolean }
@@ -84,6 +86,8 @@ export default function CreatePage() {
     try {
       const res = await api.createPoll(title.trim(), description.trim(), payload)
       if (res.ok) {
+        // La encuesta recién creada se guarda en la lista de /admin de este dispositivo
+        savePoll({ token: res.admin_token, slug: res.slug, title: title.trim() })
         setCreated({ slug: res.slug, admin_token: res.admin_token })
       } else {
         setError(errorMessage(res.error))
@@ -99,7 +103,7 @@ export default function CreatePage() {
     const origin = window.location.origin
     const publicUrl = `${origin}/p/${created.slug}`
     const adminUrl = `${origin}/admin/${created.admin_token}`
-    const waHref = `https://wa.me/?text=${encodeURIComponent(`${title.trim()} — apúntate aquí: ${publicUrl}`)}`
+    const waHref = `https://wa.me/?text=${encodeURIComponent(`${title.trim()} — confirma tu asistencia aquí: ${publicUrl}`)}`
     return (
       <Card className="animate-pop p-5">
         <div className="flex items-start gap-2.5">
@@ -141,14 +145,30 @@ export default function CreatePage() {
             Crear otra
           </button>
         </div>
+        <p className="mt-3 text-center text-[13px] text-ink-faint">
+          Guardada en{' '}
+          <Link to="/admin" className="font-semibold text-court-700 hover:text-court-600">
+            Tus encuestas
+          </Link>
+        </p>
       </Card>
     )
   }
 
   return (
     <>
-      <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">Nueva encuesta</h1>
-      <p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">Nueva encuesta</h1>
+          <p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p>
+        </div>
+        {savedPolls().length > 0 && (
+          <Link to="/admin" className={`${toolbarButtonClass} shrink-0`}>
+            <ClipboardList className="size-3.5" aria-hidden="true" />
+            Tus encuestas
+          </Link>
+        )}
+      </div>
 
       <div className="mt-5 space-y-4">
         <label className="block">
