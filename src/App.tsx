@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import { Volleyball } from 'lucide-react'
+import { ArrowUpRight, Volleyball } from 'lucide-react'
+import { DEMO_HINT } from './lib/api'
 import AdminPage from './pages/AdminPage'
 import CreatePage from './pages/CreatePage'
 import PollPage from './pages/PollPage'
@@ -23,13 +24,15 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-dvh">
         <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur">
-          <div className="mx-auto flex w-full max-w-md items-center px-4 py-3 sm:max-w-xl">
-            <Link to="/" aria-label="csspoll — inicio" className="pressable">
-              <Logo />
-            </Link>
+          <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-4">
+            <Link to="/" aria-label="csspoll — inicio" className="pressable"><Logo /></Link>
+            <div className="flex items-center gap-3">
+              <span className="hidden rounded-full bg-court-50 px-3 py-1.5 text-[11px] font-semibold text-court-700 sm:inline-flex">{DEMO_HINT}</span>
+              <Link to="/" className="inline-flex items-center gap-1 text-[13px] font-semibold text-ink-soft hover:text-court-700">Nueva encuesta <ArrowUpRight className="size-3.5" /></Link>
+            </div>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-md px-4 pt-5 pb-28 sm:max-w-xl">
+        <main className="mx-auto w-full max-w-3xl px-5 pt-8 pb-32 sm:px-8 sm:pt-12">
           <Routes>
             <Route path="/" element={<CreatePage />} />
             <Route path="/p/:slug" element={<PollPage />} />

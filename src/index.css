@@ -26,6 +26,11 @@
 @layer base {
   body {
     @apply bg-paper text-ink antialiased;
+    background-image: radial-gradient(circle at 15% 0%, rgba(18,160,85,.07), transparent 26rem), radial-gradient(circle at 90% 25%, rgba(232,184,91,.08), transparent 22rem);
+  }
+
+  button, a, input, textarea {
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
