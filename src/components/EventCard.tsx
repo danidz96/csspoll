@@ -22,8 +22,8 @@ export function EventCard({
   const pct = event.capacity === null ? 0 : Math.min(100, Math.round((taken / event.capacity) * 100))
 
   return (
-    <Card className="animate-pop border-line/80 p-5 shadow-[0_12px_32px_rgba(21,25,35,0.06)] transition-all hover:-translate-y-0.5 hover:border-court-100 hover:shadow-[0_18px_40px_rgba(21,25,35,0.1)] sm:p-6">
-      <div className="flex items-start justify-between gap-3">
+    <Card className="group animate-pop overflow-hidden border-line/80 p-0 shadow-[0_12px_32px_rgba(21,25,35,0.06)] transition-all hover:-translate-y-0.5 hover:border-court-100 hover:shadow-[0_18px_40px_rgba(21,25,35,0.1)]">
+      <div className="flex items-start justify-between gap-3 p-5 sm:p-6">
         <div className="min-w-0">
           {showDate && <p className="text-[13px] font-medium text-ink-faint">{formatDay(event.date)}</p>}
           <div className="flex flex-wrap items-baseline gap-x-2">

@@ -171,8 +171,22 @@ export default function CreatePage() {
         </div>
       </section>
 
-      <div className="mx-auto mt-14 max-w-2xl rounded-[2rem] border border-line bg-white p-5 shadow-[0_16px_40px_rgba(21,25,35,.06)] sm:p-8">
-        <div className="mb-6 flex items-end justify-between gap-4"><div><h2 className="text-xl font-bold tracking-tight text-ink">Nueva encuesta</h2><p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p></div><span className="hidden rounded-full bg-paper px-3 py-1.5 text-xs font-bold text-ink-faint sm:inline-flex">Paso 1 de 1</span></div>
+      <section id="como-funciona" className="mx-auto mt-14 grid max-w-4xl gap-3 sm:grid-cols-3">
+        {[
+          ['01', 'Diseña tu encuesta', 'Ponle contexto y añade todas las opciones que quieras comparar.'],
+          ['02', 'Invita al equipo', 'Comparte un enlace único por WhatsApp, Slack o donde habléis.'],
+          ['03', 'Tomad la decisión', 'Ve las respuestas agrupadas y cierra el plan sin perseguir a nadie.'],
+        ].map(([number, title, copy]) => (
+          <div key={number} className="rounded-2xl border border-line bg-white/70 p-5">
+            <span className="text-xs font-bold tracking-[0.18em] text-court-600">{number}</span>
+            <h2 className="mt-4 text-[15px] font-bold text-ink">{title}</h2>
+            <p className="mt-1.5 text-sm leading-6 text-ink-soft">{copy}</p>
+          </div>
+        ))}
+      </section>
+
+      <div className="mx-auto mt-10 max-w-4xl rounded-[2rem] border border-line bg-white p-5 shadow-[0_20px_60px_rgba(21,25,35,.08)] sm:p-8">
+        <div className="mb-7 flex items-start justify-between gap-4 border-b border-line pb-6"><div><div className="mb-2 inline-flex rounded-full bg-court-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-court-700">Constructor</div><h2 className="text-2xl font-bold tracking-tight text-ink">Nueva encuesta</h2><p className="mt-1 text-sm text-ink-soft">Una pregunta clara. Varias opciones. Una decisión rápida.</p></div><span className="hidden rounded-full bg-paper px-3 py-1.5 text-xs font-bold text-ink-faint sm:inline-flex">Borrador · 1/1</span></div>
         <div className="space-y-4">
         <label className="block">
           <Label>Título</Label>
