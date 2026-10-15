@@ -36,7 +36,7 @@ export default function PollPage() {
     void load()
   }, [load])
 
-  // Refresco automático cada 10 s para ver los apuntes de los demás
+  // Refresco automático cada 10 s para ver las confirmaciones de los demás
   useEffect(() => {
     const t = setInterval(() => void load(), 10000)
     return () => clearInterval(t)
@@ -64,7 +64,7 @@ export default function PollPage() {
   async function submit() {
     const trimmed = name.trim()
     if (trimmed === '') {
-      setError('Escribe tu nombre para apuntarte.')
+      setError('Escribe tu nombre para confirmar.')
       return
     }
     setSubmitting(true)
@@ -77,7 +77,7 @@ export default function PollPage() {
         setHadSignups(selected.size > 0)
         setDirty(false)
         setPoll(res.poll)
-        setToast('Apuntes guardados')
+        setToast('Asistencia guardada')
         setTimeout(() => setToast(null), 2500)
       } else {
         setError(errorMessage(res.error, res.full))
@@ -121,10 +121,10 @@ export default function PollPage() {
     : selected.size > 0
       ? hadSignups && dirty
         ? 'Guardar cambios'
-        : 'Apuntarme'
+        : 'Confirmar'
       : hadSignups
-        ? 'Quitar mi apunte'
-        : 'Apuntarme'
+        ? 'Quitar mi confirmación'
+        : 'Confirmar'
   const canSubmit = !submitting && name.trim() !== '' && (selected.size > 0 || hadSignups)
 
   return (
@@ -175,7 +175,7 @@ export default function PollPage() {
                       ) : (
                         <Circle className="size-5 text-ink-faint" aria-hidden="true" />
                       )}
-                      {isSelected ? 'Voy' : 'Apuntarme'}
+                      {isSelected ? 'Voy' : 'Confirmar'}
                     </label>
                   )
                 ) : undefined
@@ -209,8 +209,8 @@ export default function PollPage() {
               {selected.size > 0
                 ? `${selected.size} ${selected.size === 1 ? 'evento seleccionado' : 'eventos seleccionados'}`
                 : hadSignups
-                  ? 'Desmarca los eventos y guarda para quitar tus apuntes'
-                  : 'Marca los eventos a los que vas'}
+                  ? 'Desmarca los eventos y guarda para cancelar tu asistencia'
+                  : 'Confirma los eventos a los que irás'}
             </p>
           </div>
         </footer>

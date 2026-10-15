@@ -12,7 +12,7 @@ export function EventCard({
   event: PollEvent
   /** Oculta la fecha cuando el evento anterior es del mismo día */
   showDate?: boolean
-  /** Bloque inferior (checkbox de apuntarse, botones de admin…) */
+  /** Bloque inferior (checkbox de confirmar asistencia, botones de admin…) */
   action?: ReactNode
   /** Se dibuja junto a cada nombre (p. ej. la ✕ del admin) */
   renderExtra?: (s: Signup) => ReactNode
@@ -53,7 +53,7 @@ export function EventCard({
 
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
         {taken === 0 ? (
-          <p className="text-[13px] text-ink-faint">Aún no se ha apuntado nadie</p>
+          <p className="text-[13px] text-ink-faint">Nadie ha confirmado todavía</p>
         ) : (
           event.signups.map((s) => (
             <span

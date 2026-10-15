@@ -1,7 +1,7 @@
 const DEVICE_KEY = 'csspoll.device'
 const NAME_KEY = 'csspoll.name'
 
-/** Identificador anónimo y estable de este navegador (para editar tus apuntes sin login). */
+/** Identificador anónimo y estable de este navegador (para editar tus confirmaciones sin login). */
 export function deviceId(): string {
   let d = localStorage.getItem(DEVICE_KEY)
   if (!d) {
@@ -19,7 +19,7 @@ export function rememberName(name: string): void {
   localStorage.setItem(NAME_KEY, name.trim())
 }
 
-/** Eventos en los que este dispositivo se apuntó la última vez (por encuesta). */
+/** Eventos en los que este dispositivo confirmó la última vez (por encuesta). */
 export function mySelection(slug: string): string[] {
   try {
     const raw = localStorage.getItem('csspoll.sel.' + slug)

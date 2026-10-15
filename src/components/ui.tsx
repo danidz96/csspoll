@@ -25,7 +25,7 @@ export function ToolbarButton({ className = '', ...props }: ButtonHTMLAttributes
   return <button className={`${toolbarButtonClass} ${className}`} {...props} />
 }
 
-/** Icono suelto (quitar apunte, cerrar tarjeta…) */
+/** Icono suelto (quitar confirmación, cerrar tarjeta…) */
 export function IconButton({ className = '', ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
@@ -64,6 +64,7 @@ export function Card({ className = '', children }: { className?: string; childre
 
 const badgeTones = {
   neutral: 'bg-paper text-ink-soft',
+  muted: 'bg-line/60 text-ink-soft',
   open: 'bg-court-50 text-court-700',
   full: 'bg-amber-50 text-amber-700',
 } as const
