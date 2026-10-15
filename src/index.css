@@ -1,8 +1,52 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans:
+    "Schibsted Grotesk Variable", "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Papel y tinta (neutro con una pizca de verde, en vez del stone por defecto) */
+  --color-paper: #f5f7f5;
+  --color-line: #e4e8e4;
+  --color-line-strong: #d6dcd7;
+  --color-ink: #19201b;
+  --color-ink-soft: #4e5952;
+  --color-ink-faint: #68746d;
+
+  /* Verde cancha: el color de la casa */
+  --color-court-50: #eaf6ee;
+  --color-court-100: #d9eedf;
+  --color-court-500: #12a055;
+  --color-court-600: #0e7c42;
+  --color-court-700: #0b6b39;
+
+  --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 @layer base {
   body {
-    @apply bg-stone-100 text-stone-900 antialiased;
+    @apply bg-paper text-ink antialiased;
+  }
+
+  ::selection {
+    background: var(--color-court-100);
+  }
+}
+
+@layer utilities {
+  /* Feedback de pulsación común a todo lo clicable */
+  .pressable {
+    transition-property: transform, background-color, border-color, color, opacity, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: var(--ease-snappy);
+  }
+
+  .pressable:active {
+    transform: scale(0.97);
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -18,5 +62,18 @@
 }
 
 .animate-pop {
-  animation: pop 0.18s ease-out;
+  animation: pop 0.18s var(--ease-snappy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .pressable:active {
+    transform: none;
+  }
 }

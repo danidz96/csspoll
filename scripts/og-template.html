@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&display=swap');
+      * { margin: 0; box-sizing: border-box; }
+      body {
+        width: 1200px; height: 630px;
+        background: #f5f7f5;
+        font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+        color: #19201b;
+        display: grid; place-items: center;
+      }
+      .wrap { text-align: center; }
+      .lockup { display: flex; align-items: center; justify-content: center; gap: 24px; }
+      .tile {
+        width: 104px; height: 104px; border-radius: 28px; background: #0e7c42;
+        display: grid; place-items: center; color: #fff;
+      }
+      h1 { font-size: 84px; font-weight: 800; letter-spacing: -0.03em; }
+      p { margin-top: 28px; font-size: 32px; font-weight: 500; color: #4e5952; }
+      small { display: block; margin-top: 14px; font-size: 22px; font-weight: 500; color: #68746d; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="lockup">
+        <span class="tile">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 7a16 16 20 0 1 10.98 4.362"></path>
+            <path d="M12 12a13 13 0 0 1-8.66 5"></path>
+            <path d="M16.83 13.634a16 16 0 0 1-9.267 7.328"></path>
+            <path d="M20.66 17A13 13 0 0 0 12 12a13 13 0 0 1 0-10"></path>
+            <path d="M8.17 15.366a16 16 0 0 1-1.713-11.69"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+        </span>
+        <h1>csspoll</h1>
+      </div>
+      <p>Encuestas de apuntes para tu grupo</p>
+      <small>Varios horarios · Plazas limitadas · Sin registros</small>
+    </div>
+  </body>
+</html>

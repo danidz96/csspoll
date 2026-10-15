@@ -1,8 +1,22 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Card, Input, Label, LinkButton, LinkRow, SecondaryButton, Textarea, secondaryButtonClass } from '../components/ui'
+import { CheckCircle2, Circle, Plus, X } from 'lucide-react'
+import {
+  Button,
+  Card,
+  IconButton,
+  Input,
+  Label,
+  LinkRow,
+  SecondaryButton,
+  Textarea,
+  WhatsAppIcon,
+  primaryButtonClass,
+  secondaryButtonClass,
+} from '../components/ui'
 import { api, errorMessage, type EventInput } from '../lib/api'
 import { defaultEventName, todayISO } from '../lib/format'
+import { useTitle } from '../lib/useTitle'
 
 type EventDraft = { key: string; name: string; date: string; time: string; capacity: string; unlimited: boolean }
 
@@ -18,6 +32,8 @@ function newDraft(i: number): EventDraft {
 }
 
 export default function CreatePage() {
+  useTitle('Nueva encuesta · csspoll')
+
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [events, setEvents] = useState<EventDraft[]>(() => [newDraft(0)])
@@ -42,16 +58,16 @@ export default function CreatePage() {
 
   async function submitInner() {
     if (title.trim() === '') {
-      setError('Ponle un título a la encuesta.')
+      setError('Ponle un título.')
       return
     }
     for (const e of events) {
       if (e.name.trim() === '' || e.date === '' || e.time === '') {
-        setError('Revisa los eventos: nombre, fecha y hora son obligatorios.')
+        setError('Revisa los eventos: falta el nombre, la fecha o la hora.')
         return
       }
       if (!e.unlimited && !(/^\d{1,4}$/.test(e.capacity) && Number(e.capacity) > 0)) {
-        setError('Las plazas deben ser un número mayor que 0 (o marca «Sin límite»).')
+        setError('Las plazas deben ser mayores que 0, o marca «Sin límite».')
         return
       }
     }
@@ -86,30 +102,34 @@ export default function CreatePage() {
     const waHref = `https://wa.me/?text=${encodeURIComponent(`${title.trim()} — apúntate aquí: ${publicUrl}`)}`
     return (
       <Card className="animate-pop p-5">
-        <h1 className="text-lg font-bold text-stone-900">¡Encuesta creada! 🎉</h1>
-        <p className="mt-1 text-sm text-stone-600">Manda el primer enlace al grupo y guarda el segundo solo para ti.</p>
+        <div className="flex items-start gap-2.5">
+          <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-court-600" aria-hidden="true" />
+          <div>
+            <h1 className="text-[17px] font-semibold text-ink">Encuesta creada</h1>
+            <p className="mt-0.5 text-sm text-ink-soft">
+              Compártela con el grupo y guarda tu enlace de administración.
+            </p>
+          </div>
+        </div>
         <div className="mt-4 space-y-3">
+          <LinkRow label="Enlace para el grupo" url={publicUrl} />
+          <a href={waHref} target="_blank" rel="noreferrer" className={`${primaryButtonClass} w-full`}>
+            <WhatsAppIcon />
+            Compartir por WhatsApp
+          </a>
           <LinkRow
-            label="Enlace para el grupo"
-            url={publicUrl}
-            extra={
-              <LinkButton href={waHref} target="_blank" rel="noreferrer">
-                Compartir por WhatsApp
-              </LinkButton>
-            }
-          />
-          <LinkRow
-            label="Tu enlace de administración"
+            label="Enlace de administración"
             url={adminUrl}
-            hint="Guárdalo: con él editas, cierras o duplicas la encuesta. No lo compartas."
+            hint="Con él editas, cierras o duplicas la encuesta. No lo compartas."
           />
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link to={`/p/${created.slug}`} className={secondaryButtonClass}>
-            Ver la encuesta
+        <div className="mt-4 flex items-center gap-1">
+          <Link to={`/p/${created.slug}`} className={`${secondaryButtonClass} flex-1`}>
+            Ver encuesta
           </Link>
-          <SecondaryButton
+          <button
             type="button"
+            className="pressable h-11 rounded-xl px-4 text-[15px] font-semibold text-ink-soft hover:bg-paper hover:text-ink"
             onClick={() => {
               setCreated(null)
               setTitle('')
@@ -119,7 +139,7 @@ export default function CreatePage() {
             }}
           >
             Crear otra
-          </SecondaryButton>
+          </button>
         </div>
       </Card>
     )
@@ -127,12 +147,10 @@ export default function CreatePage() {
 
   return (
     <>
-      <h1 className="text-xl font-bold text-stone-900">Crea la encuesta de apuntes</h1>
-      <p className="mt-1 text-sm text-stone-600">
-        Añade los eventos del día, con o sin límite de plazas. Tú solo compartes un enlace.
-      </p>
+      <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">Nueva encuesta</h1>
+      <p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-5 space-y-4">
         <label className="block">
           <Label>Título</Label>
           <Input
@@ -146,7 +164,7 @@ export default function CreatePage() {
 
         <label className="block">
           <Label>
-            Descripción <span className="font-normal text-stone-400">(opcional)</span>
+            Descripción <span className="font-normal text-ink-faint">(opcional)</span>
           </Label>
           <Textarea
             rows={2}
@@ -161,25 +179,26 @@ export default function CreatePage() {
           <div className="space-y-3">
             {events.map((e) => (
               <Card key={e.key} className="p-3.5">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <Input
                     value={e.name}
                     onChange={(ev) => update(e.key, { name: ev.target.value })}
                     placeholder="Entreno A"
+                    aria-label="Nombre del evento"
                     maxLength={80}
                   />
                   {events.length > 1 && (
-                    <button
+                    <IconButton
                       type="button"
+                      aria-label={`Quitar ${e.name || 'este evento'}`}
                       title="Quitar este evento"
-                      className="shrink-0 rounded-lg p-2 text-stone-400 transition hover:bg-stone-100 hover:text-red-600"
                       onClick={() => setEvents((evs) => evs.filter((x) => x.key !== e.key))}
                     >
-                      ✕
-                    </button>
+                      <X className="size-4" />
+                    </IconButton>
                   )}
                 </div>
-                <div className="mt-2.5 grid grid-cols-2 gap-2">
+                <div className="mt-2.5 grid grid-cols-2 gap-2.5">
                   <label>
                     <Label>Día</Label>
                     <Input type="date" value={e.date} onChange={(ev) => update(e.key, { date: ev.target.value })} />
@@ -189,48 +208,62 @@ export default function CreatePage() {
                     <Input type="time" value={e.time} onChange={(ev) => update(e.key, { time: ev.target.value })} />
                   </label>
                 </div>
-                <div className="mt-2.5 flex flex-wrap items-center justify-between gap-3">
-                  <label className="flex cursor-pointer items-center gap-2 text-sm text-stone-700 select-none">
-                    <input
-                      type="checkbox"
-                      className="size-4 accent-emerald-600"
-                      checked={e.unlimited}
-                      onChange={(ev) => update(e.key, { unlimited: ev.target.checked })}
-                    />
-                    Sin límite
-                  </label>
-                  {!e.unlimited && (
-                    <label className="flex items-center gap-2 text-sm text-stone-700">
-                      Plazas
+                <div className="mt-2.5 flex items-end justify-between gap-2.5">
+                  {!e.unlimited ? (
+                    <label>
+                      <Label>Plazas</Label>
                       <Input
                         type="number"
                         min={1}
                         max={9999}
+                        inputMode="numeric"
                         value={e.capacity}
                         onChange={(ev) => update(e.key, { capacity: ev.target.value })}
-                        className="w-20"
+                        className="w-24"
                       />
                     </label>
+                  ) : (
+                    <span />
                   )}
+                  <label
+                    className={`pressable flex h-11 cursor-pointer items-center gap-2 rounded-xl border px-3 text-[14px] font-medium select-none ${
+                      e.unlimited
+                        ? 'border-court-600 bg-court-50 text-court-700'
+                        : 'border-line-strong text-ink-soft hover:bg-paper'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      className="sr-only"
+                      checked={e.unlimited}
+                      onChange={(ev) => update(e.key, { unlimited: ev.target.checked })}
+                    />
+                    {e.unlimited ? (
+                      <CheckCircle2 className="size-4 text-court-600" aria-hidden="true" />
+                    ) : (
+                      <Circle className="size-4 text-ink-faint" aria-hidden="true" />
+                    )}
+                    Sin límite
+                  </label>
                 </div>
               </Card>
             ))}
           </div>
           <SecondaryButton
             type="button"
-            className="mt-3 w-full"
+            className="mt-3 w-full border-dashed"
             onClick={() => setEvents((evs) => [...evs, newDraft(evs.length)])}
           >
-            + Añadir otro evento
+            <Plus className="size-4" aria-hidden="true" />
+            Añadir evento
           </SecondaryButton>
         </div>
 
-        {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+        {error && <p className="text-[13px] font-medium text-red-600">{error}</p>}
 
-        <Button type="button" className="w-full py-3" disabled={creating} onClick={() => void submit()}>
+        <Button type="button" className="h-12 w-full" disabled={creating} onClick={() => void submit()}>
           {creating ? 'Creando…' : 'Crear encuesta'}
         </Button>
-        <p className="pb-2 text-center text-xs text-stone-400">Sin registros: quien se apunte solo escribe su nombre.</p>
       </div>
     </>
   )

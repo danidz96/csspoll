@@ -91,17 +91,18 @@ export const api = {
 export function errorMessage(code: string, full?: string[]): string {
   switch (code) {
     case 'events_full':
-      return full && full.length > 0 ? `Está completo: ${full.join(', ')}.` : 'Alguno de los eventos está completo.'
+      if (!full || full.length === 0) return 'Alguno de los eventos está completo.'
+      return full.length === 1 ? `Está completo: ${full[0]}.` : `Están completos: ${full.join(', ')}.`
     case 'closed':
       return 'Las inscripciones están cerradas.'
     case 'invalid_name':
-      return 'Escribe tu nombre (máximo 40 caracteres).'
+      return 'Escribe tu nombre (máx. 40 caracteres).'
     case 'not_found':
-      return 'No encontramos nada con ese enlace.'
+      return 'No encontramos esta encuesta.'
     case 'invalid_events':
-      return 'Revisa los eventos: nombre, fecha y hora son obligatorios.'
+      return 'Revisa los eventos: falta el nombre, la fecha o la hora.'
     case 'invalid_title':
-      return 'Ponle un título a la encuesta (máximo 80 caracteres).'
+      return 'Ponle un título (máx. 80 caracteres).'
     case 'invalid_event':
       return 'Revisa los datos del evento.'
     case 'last_event':

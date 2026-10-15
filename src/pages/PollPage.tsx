@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { CheckCircle2, Circle, Lock, Volleyball } from 'lucide-react'
 import { EventCard } from '../components/EventCard'
-import { Button, Card, Input, Spinner, Toast } from '../components/ui'
+import { Button, Input, Spinner, Toast } from '../components/ui'
 import { api, errorMessage, type Poll } from '../lib/api'
 import { deviceId, mySelection, rememberName, rememberedName, setMySelection } from '../lib/identity'
+import { useTitle } from '../lib/useTitle'
 
 export default function PollPage() {
   const params = useParams<{ slug: string }>()
@@ -18,6 +20,8 @@ export default function PollPage() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
+
+  useTitle(poll?.title ? `${poll.title} · csspoll` : 'Encuesta · csspoll')
 
   const load = useCallback(async () => {
     if (!slug) return
@@ -73,7 +77,7 @@ export default function PollPage() {
         setHadSignups(selected.size > 0)
         setDirty(false)
         setPoll(res.poll)
-        setToast(selected.size > 0 ? '¡Apuntado! 🏐' : 'Te hemos quitado de todos los eventos')
+        setToast('Apuntes guardados')
         setTimeout(() => setToast(null), 2500)
       } else {
         setError(errorMessage(res.error, res.full))
@@ -88,19 +92,24 @@ export default function PollPage() {
 
   if (poll === undefined) {
     return (
-      <div className="flex items-center justify-center gap-2 py-20 text-sm text-stone-400">
-        <Spinner /> Cargando encuesta…
+      <div className="flex items-center justify-center gap-2 py-24 text-[13px] text-ink-faint">
+        <Spinner /> Cargando…
       </div>
     )
   }
 
   if (poll === null) {
     return (
-      <Card className="animate-pop p-6 text-center">
-        <p className="text-3xl">🤔</p>
-        <h1 className="mt-2 text-lg font-bold text-stone-900">No encontramos esta encuesta</h1>
-        <p className="mt-1 text-sm text-stone-600">Puede que el enlace esté mal o que la encuesta se haya borrado.</p>
-      </Card>
+      <div className="flex flex-col items-center py-20 text-center">
+        <Volleyball className="size-8 text-ink-faint/50" strokeWidth={1.8} aria-hidden="true" />
+        <h1 className="mt-3 text-[17px] font-semibold text-ink">Esta encuesta no existe</h1>
+        <p className="mt-1 max-w-[36ch] text-sm text-ink-soft">
+          El enlace puede estar mal o la encuesta ya no está disponible.
+        </p>
+        <Link to="/" className="mt-4 text-sm font-semibold text-court-700 hover:text-court-600">
+          Crear una encuesta
+        </Link>
+      </div>
     )
   }
 
@@ -121,43 +130,52 @@ export default function PollPage() {
   return (
     <>
       <header className="mb-4">
-        <h1 className="text-xl font-bold text-stone-900">{poll.title}</h1>
-        {poll.description && <p className="mt-1 text-sm text-stone-600">{poll.description}</p>}
+        <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">{poll.title}</h1>
+        {poll.description && <p className="mt-1 text-[15px] text-ink-soft">{poll.description}</p>}
         {poll.closed && (
-          <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-            Las inscripciones están cerradas. Habla con quien organiza si necesitas cambios.
+          <div className="mt-3 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-[13px] font-medium text-amber-800">
+            <Lock className="size-4 shrink-0" aria-hidden="true" />
+            Inscripciones cerradas. Habla con quien organiza si necesitas cambios.
           </div>
         )}
       </header>
 
       <div className="space-y-3">
-        {poll.events.map((event) => {
+        {poll.events.map((event, i) => {
           const isSelected = selected.has(event.id)
           const isFull = fullIds.has(event.id)
           return (
             <EventCard
               key={event.id}
               event={event}
+              showDate={i === 0 || poll.events[i - 1]!.date !== event.date}
               action={
                 !poll.closed ? (
                   isFull && !isSelected ? (
-                    <div className="mt-3 flex items-center gap-2.5 rounded-xl border border-stone-200 px-3 py-2.5 opacity-60">
-                      <input type="checkbox" className="size-4 accent-emerald-600" checked={false} disabled readOnly />
-                      <span className="text-sm font-medium text-stone-500">Completo</span>
+                    <div className="mt-3 flex h-10 items-center gap-2.5 rounded-xl border border-line bg-paper px-3 text-[14px] font-medium text-ink-faint">
+                      <Lock className="size-4" aria-hidden="true" />
+                      Completo
                     </div>
                   ) : (
                     <label
-                      className={`mt-3 flex cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2.5 transition select-none ${
-                        isSelected ? 'border-emerald-500 bg-emerald-50' : 'border-stone-200 hover:bg-stone-50'
+                      className={`pressable mt-3 flex h-10 cursor-pointer items-center gap-2.5 rounded-xl border px-3 text-[14px] font-medium select-none ${
+                        isSelected
+                          ? 'border-court-600 bg-court-50 text-court-700'
+                          : 'border-line-strong text-ink-soft hover:bg-paper'
                       }`}
                     >
                       <input
                         type="checkbox"
-                        className="size-4 accent-emerald-600"
+                        className="sr-only"
                         checked={isSelected}
                         onChange={() => toggle(event.id)}
                       />
-                      <span className="text-sm font-medium text-stone-800">{isSelected ? '¡Voy!' : 'Apuntarme aquí'}</span>
+                      {isSelected ? (
+                        <CheckCircle2 className="size-5 text-court-600" aria-hidden="true" />
+                      ) : (
+                        <Circle className="size-5 text-ink-faint" aria-hidden="true" />
+                      )}
+                      {isSelected ? 'Voy' : 'Apuntarme'}
                     </label>
                   )
                 ) : undefined
@@ -167,12 +185,10 @@ export default function PollPage() {
         })}
       </div>
 
-      <p className="mt-4 text-center text-xs text-stone-400">Esta página se actualiza sola cada pocos segundos.</p>
-
       {!poll.closed && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-stone-200 bg-white/95 backdrop-blur">
-          <div className="mx-auto w-full max-w-md px-4 py-3 sm:max-w-xl">
-            {error && <p className="mb-2 text-sm font-medium text-red-600">{error}</p>}
+        <footer className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur">
+          <div className="mx-auto w-full max-w-md px-4 py-3 pb-[max(env(safe-area-inset-bottom),12px)] sm:max-w-xl">
+            {error && <p className="mb-2 text-[13px] font-medium text-red-600">{error}</p>}
             <div className="flex gap-2">
               <Input
                 value={name}
@@ -185,19 +201,19 @@ export default function PollPage() {
                 autoComplete="name"
                 className="flex-1"
               />
-              <Button type="button" onClick={() => void submit()} disabled={!canSubmit}>
+              <Button type="button" className="shrink-0" onClick={() => void submit()} disabled={!canSubmit}>
                 {label}
               </Button>
             </div>
-            <p className="mt-1.5 text-center text-xs text-stone-400">
+            <p className="mt-1.5 text-center text-[12px] text-ink-faint">
               {selected.size > 0
                 ? `${selected.size} ${selected.size === 1 ? 'evento seleccionado' : 'eventos seleccionados'}`
                 : hadSignups
-                  ? 'Desmarca todo y guarda para borrar tus apuntes'
+                  ? 'Desmarca los eventos y guarda para quitar tus apuntes'
                   : 'Marca los eventos a los que vas'}
             </p>
           </div>
-        </div>
+        </footer>
       )}
 
       <Toast message={toast} />

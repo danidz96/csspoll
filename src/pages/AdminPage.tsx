@@ -1,23 +1,37 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import {
+  CalendarPlus,
+  CheckCircle2,
+  Circle,
+  ExternalLink,
+  Lock,
+  LockKeyhole,
+  LockOpen,
+  Pencil,
+  Plus,
+  Trash2,
+  X,
+} from 'lucide-react'
 import { EventCard } from '../components/EventCard'
 import {
   Badge,
   Button,
   Card,
   CopyButton,
+  IconButton,
   Input,
   Label,
-  LinkButton,
   LinkRow,
   SecondaryButton,
   Spinner,
   Textarea,
   Toast,
-  secondaryButtonClass,
+  toolbarButtonClass,
 } from '../components/ui'
 import { api, errorMessage, type ActionResult, type Poll } from '../lib/api'
 import { defaultEventName, todayISO } from '../lib/format'
+import { useTitle } from '../lib/useTitle'
 
 type EventFormValues = { name: string; date: string; time: string; capacity: number | null }
 
@@ -43,12 +57,12 @@ function EventForm({
     name.trim() !== '' && date !== '' && time !== '' && (unlimited || (/^\d{1,4}$/.test(capacity) && Number(capacity) > 0))
 
   return (
-    <Card className="animate-pop border-emerald-200 p-4">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <label className="sm:col-span-2">
-          <Label>Nombre</Label>
-          <Input value={name} onChange={(e) => setName(e.target.value)} maxLength={80} placeholder="Entreno A" />
-        </label>
+    <Card className="animate-pop border-court-100 p-4">
+      <label className="block">
+        <Label>Nombre</Label>
+        <Input value={name} onChange={(e) => setName(e.target.value)} maxLength={80} placeholder="Entreno A" />
+      </label>
+      <div className="mt-2.5 grid grid-cols-2 gap-2.5">
         <label>
           <Label>Día</Label>
           <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -58,33 +72,41 @@ function EventForm({
           <Input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
         </label>
       </div>
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-        <label className="flex cursor-pointer items-center gap-2 text-sm text-stone-700 select-none">
-          <input
-            type="checkbox"
-            className="size-4 accent-emerald-600"
-            checked={unlimited}
-            onChange={(e) => setUnlimited(e.target.checked)}
-          />
-          Sin límite de plazas
-        </label>
-        {!unlimited && (
-          <label className="flex items-center gap-2 text-sm text-stone-700">
-            Plazas
+      <div className="mt-2.5 flex items-end justify-between gap-2.5">
+        {!unlimited ? (
+          <label>
+            <Label>Plazas</Label>
             <Input
               type="number"
               min={1}
               max={9999}
+              inputMode="numeric"
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
-              className="w-20"
+              className="w-24"
             />
           </label>
+        ) : (
+          <span />
         )}
+        <label
+          className={`pressable flex h-11 cursor-pointer items-center gap-2 rounded-xl border px-3 text-[14px] font-medium select-none ${
+            unlimited ? 'border-court-600 bg-court-50 text-court-700' : 'border-line-strong text-ink-soft hover:bg-paper'
+          }`}
+        >
+          <input type="checkbox" className="sr-only" checked={unlimited} onChange={(e) => setUnlimited(e.target.checked)} />
+          {unlimited ? (
+            <CheckCircle2 className="size-4 text-court-600" aria-hidden="true" />
+          ) : (
+            <Circle className="size-4 text-ink-faint" aria-hidden="true" />
+          )}
+          Sin límite
+        </label>
       </div>
       <div className="mt-4 flex gap-2">
         <Button
           type="button"
+          className="flex-1"
           disabled={!valid || saving}
           onClick={async () => {
             if (savingRef.current) return
@@ -122,6 +144,8 @@ export default function AdminPage() {
   const [pDesc, setPDesc] = useState('')
   const [editingEvent, setEditingEvent] = useState<string | null>(null)
   const [adding, setAdding] = useState(false)
+
+  useTitle(poll?.title ? `Panel · ${poll.title}` : 'Panel · csspoll')
 
   const load = useCallback(async () => {
     if (!tk) return
@@ -199,21 +223,21 @@ export default function AdminPage() {
 
   if (poll === undefined) {
     return (
-      <div className="flex items-center justify-center gap-2 py-20 text-sm text-stone-400">
-        <Spinner /> Cargando panel…
+      <div className="flex items-center justify-center gap-2 py-24 text-[13px] text-ink-faint">
+        <Spinner /> Cargando…
       </div>
     )
   }
 
   if (poll === null) {
     return (
-      <Card className="animate-pop p-6 text-center">
-        <p className="text-3xl">🔒</p>
-        <h1 className="mt-2 text-lg font-bold text-stone-900">Enlace de administración no válido</h1>
-        <p className="mt-1 text-sm text-stone-600">
-          Comprueba que has copiado el enlace completo. Sin él no se puede gestionar la encuesta.
+      <div className="flex flex-col items-center py-20 text-center">
+        <LockKeyhole className="size-8 text-ink-faint/50" strokeWidth={1.8} aria-hidden="true" />
+        <h1 className="mt-3 text-[17px] font-semibold text-ink">Enlace no válido</h1>
+        <p className="mt-1 max-w-[36ch] text-sm text-ink-soft">
+          Comprueba que has pegado el enlace completo. Sin él no se puede gestionar la encuesta.
         </p>
-      </Card>
+      </div>
     )
   }
 
@@ -221,25 +245,26 @@ export default function AdminPage() {
 
   return (
     <>
-      <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">Panel de administración</p>
-      <div className="mt-1 flex flex-wrap items-center gap-2">
-        <h1 className="text-xl font-bold text-stone-900">{poll.title}</h1>
-        <Badge tone={poll.closed ? 'amber' : 'green'}>{poll.closed ? 'Cerrada' : 'Abierta'}</Badge>
+      <div className="flex flex-wrap items-center gap-2">
+        <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">{poll.title}</h1>
+        <Badge tone={poll.closed ? 'full' : 'open'}>{poll.closed ? 'Cerrada' : 'Abierta'}</Badge>
       </div>
-      {poll.description && <p className="mt-1 text-sm text-stone-600">{poll.description}</p>}
+      {poll.description && <p className="mt-1 text-[15px] text-ink-soft">{poll.description}</p>}
 
       {editingPoll ? (
-        <Card className="animate-pop mt-4 border-emerald-200 p-4">
+        <Card className="animate-pop mt-4 border-court-100 p-4">
           <label className="block">
             <Label>Título</Label>
             <Input value={pTitle} onChange={(e) => setPTitle(e.target.value)} maxLength={80} />
           </label>
           <label className="mt-3 block">
-            <Label>Descripción</Label>
-            <Textarea rows={2} value={pDesc} onChange={(e) => setPDesc(e.target.value)} placeholder="Opcional" />
+            <Label>
+              Descripción <span className="font-normal text-ink-faint">(opcional)</span>
+            </Label>
+            <Textarea rows={2} value={pDesc} onChange={(e) => setPDesc(e.target.value)} placeholder="Llevad balón, cancha 2…" />
           </label>
           <div className="mt-4 flex gap-2">
-            <Button type="button" disabled={pTitle.trim() === ''} onClick={() => void savePollEdit()}>
+            <Button type="button" className="flex-1" disabled={pTitle.trim() === ''} onClick={() => void savePollEdit()}>
               Guardar
             </Button>
             <SecondaryButton type="button" onClick={() => setEditingPoll(false)}>
@@ -249,69 +274,74 @@ export default function AdminPage() {
         </Card>
       ) : (
         <div className="mt-4 flex flex-wrap gap-2">
-          <SecondaryButton
+          <button
             type="button"
+            className={toolbarButtonClass}
             onClick={() =>
               void act(() => api.adminUpdatePoll(tk, null, null, !poll.closed), poll.closed ? 'Inscripciones abiertas' : 'Inscripciones cerradas')
             }
           >
-            {poll.closed ? 'Reabrir inscripciones' : 'Cerrar inscripciones'}
-          </SecondaryButton>
-          <LinkButton href={`/p/${poll.slug ?? ''}`} target="_blank" rel="noreferrer">
+            {poll.closed ? <LockOpen className="size-3.5" aria-hidden="true" /> : <Lock className="size-3.5" aria-hidden="true" />}
+            {poll.closed ? 'Reabrir' : 'Cerrar'}
+          </button>
+          <a href={`/p/${poll.slug ?? ''}`} target="_blank" rel="noreferrer" className={toolbarButtonClass}>
+            <ExternalLink className="size-3.5" aria-hidden="true" />
             Ver pública
-          </LinkButton>
+          </a>
           <CopyButton text={`${origin}/p/${poll.slug ?? ''}`} label="Copiar enlace" />
-          <SecondaryButton
+          <button
             type="button"
+            className={toolbarButtonClass}
             onClick={() => {
               setPTitle(poll.title)
               setPDesc(poll.description ?? '')
               setEditingPoll(true)
             }}
           >
+            <Pencil className="size-3.5" aria-hidden="true" />
             Editar
-          </SecondaryButton>
-          <SecondaryButton type="button" disabled={duplicating} onClick={() => void duplicate()}>
-            {duplicating ? 'Duplicando…' : 'Duplicar (+7 días)'}
-          </SecondaryButton>
+          </button>
+          <button type="button" className={toolbarButtonClass} disabled={duplicating} onClick={() => void duplicate()}>
+            <CalendarPlus className="size-3.5" aria-hidden="true" />
+            {duplicating ? 'Duplicando…' : 'Duplicar +7 días'}
+          </button>
         </div>
       )}
 
       {dup && (
-        <Card className="animate-pop mt-4 border-emerald-200 bg-emerald-50/50 p-4">
+        <Card className="animate-pop mt-4 border-court-100 bg-court-50/60 p-4">
           <div className="flex items-start justify-between gap-3">
-            <p className="font-semibold text-emerald-900">Encuesta duplicada ✅</p>
-            <button
-              type="button"
-              className="text-sm text-emerald-700/70 transition hover:text-emerald-900"
-              onClick={() => setDup(null)}
-            >
-              ✕
-            </button>
+            <p className="flex items-center gap-2 font-semibold text-court-700">
+              <CheckCircle2 className="size-4 shrink-0" aria-hidden="true" />
+              Encuesta duplicada
+            </p>
+            <IconButton type="button" aria-label="Cerrar aviso" onClick={() => setDup(null)}>
+              <X className="size-4" />
+            </IconButton>
           </div>
-          <p className="mt-1 text-sm text-emerald-800">Mismos horarios, fechas +7 días y sin apuntes. Estos son sus enlaces:</p>
+          <p className="mt-1 text-sm text-court-700/90">Mismos horarios, fechas +7 días y sin apuntes. Estos son sus enlaces:</p>
           <div className="mt-3 space-y-2">
-            <LinkRow label="Enlace público de la nueva" url={`${origin}/p/${dup.slug}`} />
+            <LinkRow label="Enlace para el grupo" url={`${origin}/p/${dup.slug}`} />
             <LinkRow
-              label="Tu admin de la nueva"
+              label="Enlace de administración"
               url={`${origin}/admin/${dup.admin_token}`}
               hint="Guárdalo para gestionar la nueva."
             />
           </div>
           <div className="mt-3">
-            <Link to={`/admin/${dup.admin_token}`} className={secondaryButtonClass}>
+            <Link to={`/admin/${dup.admin_token}`} className={toolbarButtonClass}>
               Ir al panel de la nueva
             </Link>
           </div>
         </Card>
       )}
 
-      <div className="mt-6 flex items-center justify-between">
-        <h2 className="text-xs font-semibold tracking-wide text-stone-500 uppercase">Eventos</h2>
-        <span className="text-xs text-stone-400">{poll.events.length}</span>
+      <div className="mt-6 mb-3 flex items-center justify-between">
+        <h2 className="text-[13px] font-semibold text-ink-soft">Eventos</h2>
+        <span className="tnum text-[13px] text-ink-faint">{poll.events.length}</span>
       </div>
-      <div className="mt-3 space-y-3">
-        {poll.events.map((event) =>
+      <div className="space-y-3">
+        {poll.events.map((event, i) =>
           editingEvent === event.id ? (
             <EventForm
               key={event.id}
@@ -329,32 +359,35 @@ export default function AdminPage() {
             <EventCard
               key={event.id}
               event={event}
+              showDate={i === 0 || poll.events[i - 1]!.date !== event.date}
               renderExtra={(s) => (
                 <button
                   type="button"
+                  aria-label={`Quitar a ${s.name}`}
                   title={`Quitar a ${s.name}`}
-                  className="ml-0.5 text-stone-400 transition hover:text-red-600"
+                  className="pressable -mr-1 grid size-5 place-items-center rounded-full text-ink-faint hover:bg-red-50 hover:text-red-600"
                   onClick={() => {
                     if (window.confirm(`¿Quitar a ${s.name} de ${event.name}?`)) {
                       void act(() => api.adminRemoveSignup(tk, s.id), 'Apunte quitado')
                     }
                   }}
                 >
-                  ✕
+                  <X className="size-3.5" />
                 </button>
               )}
               action={
-                <div className="mt-3 flex items-center gap-4 border-t border-stone-100 pt-3">
+                <div className="mt-3 flex items-center gap-1 border-t border-line pt-2">
                   <button
                     type="button"
-                    className="text-sm font-medium text-stone-600 transition hover:text-stone-900"
+                    className="pressable -ml-2 inline-flex h-8 items-center gap-1.5 rounded-lg px-2 text-[13px] font-semibold text-ink-soft hover:bg-paper hover:text-ink"
                     onClick={() => setEditingEvent(event.id)}
                   >
+                    <Pencil className="size-3.5" aria-hidden="true" />
                     Editar
                   </button>
                   <button
                     type="button"
-                    className="text-sm font-medium text-red-600 transition hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="pressable inline-flex h-8 items-center gap-1.5 rounded-lg px-2 text-[13px] font-semibold text-red-600 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-40"
                     disabled={poll.events.length <= 1}
                     title={poll.events.length <= 1 ? 'La encuesta necesita al menos un evento' : undefined}
                     onClick={() => {
@@ -363,6 +396,7 @@ export default function AdminPage() {
                       }
                     }}
                   >
+                    <Trash2 className="size-3.5" aria-hidden="true" />
                     Eliminar
                   </button>
                 </div>
@@ -384,8 +418,9 @@ export default function AdminPage() {
           />
         )}
         {!adding && (
-          <SecondaryButton type="button" className="w-full" onClick={() => setAdding(true)}>
-            + Añadir evento
+          <SecondaryButton type="button" className="w-full border-dashed" onClick={() => setAdding(true)}>
+            <Plus className="size-4" aria-hidden="true" />
+            Añadir evento
           </SecondaryButton>
         )}
       </div>
