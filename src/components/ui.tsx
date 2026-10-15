@@ -87,7 +87,7 @@ export function Spinner() {
 export function Logo() {
   return (
     <span className="inline-flex items-center gap-2">
-      <span className="grid size-7 place-items-center rounded-lg bg-court-600 text-white">
+      <span className="grid size-8 place-items-center rounded-xl bg-ink text-white shadow-[0_5px_15px_rgba(21,25,35,.18)]">
         <Volleyball className="size-4" strokeWidth={2.1} aria-hidden="true" />
       </span>
       <span className="text-[17px] font-bold tracking-tight text-ink">csspoll</span>

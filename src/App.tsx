@@ -23,16 +23,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-dvh">
-        <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur">
-          <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-4">
+        <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-xl">
+          <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4 sm:px-8">
             <Link to="/" aria-label="csspoll — inicio" className="pressable"><Logo /></Link>
             <div className="flex items-center gap-3">
-              <span className="hidden rounded-full bg-court-50 px-3 py-1.5 text-[11px] font-semibold text-court-700 sm:inline-flex">{DEMO_HINT}</span>
-              <Link to="/" className="inline-flex items-center gap-1 text-[13px] font-semibold text-ink-soft hover:text-court-700">Nueva encuesta <ArrowUpRight className="size-3.5" /></Link>
+              <span className="hidden rounded-full border border-court-100 bg-court-50 px-3 py-1.5 text-[11px] font-bold tracking-wide text-court-700 sm:inline-flex">{DEMO_HINT}</span>
+              <Link to="/" className="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-ink-soft">Nueva encuesta <ArrowUpRight className="size-3.5" /></Link>
             </div>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-3xl px-5 pt-8 pb-32 sm:px-8 sm:pt-12">
+        <main className="mx-auto w-full max-w-5xl px-5 pt-8 pb-32 sm:px-8 sm:pt-14">
           <Routes>
             <Route path="/" element={<CreatePage />} />
             <Route path="/p/:slug" element={<PollPage />} />

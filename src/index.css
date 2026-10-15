@@ -5,20 +5,19 @@
     "Schibsted Grotesk Variable", "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, Arial, sans-serif;
 
-  /* Papel y tinta (neutro con una pizca de verde, en vez del stone por defecto) */
-  --color-paper: #f5f7f5;
-  --color-line: #e4e8e4;
-  --color-line-strong: #d6dcd7;
-  --color-ink: #19201b;
-  --color-ink-soft: #4e5952;
-  --color-ink-faint: #68746d;
+  /* Sistema visual: midnight editorial + coral energético */
+  --color-paper: #f4f5f7;
+  --color-line: #e3e6eb;
+  --color-line-strong: #cfd5de;
+  --color-ink: #151923;
+  --color-ink-soft: #566071;
+  --color-ink-faint: #8a94a3;
 
-  /* Verde cancha: el color de la casa */
-  --color-court-50: #eaf6ee;
-  --color-court-100: #d9eedf;
-  --color-court-500: #12a055;
-  --color-court-600: #0e7c42;
-  --color-court-700: #0b6b39;
+  --color-court-50: #fff0ed;
+  --color-court-100: #ffdcd5;
+  --color-court-500: #f06451;
+  --color-court-600: #dc4b39;
+  --color-court-700: #b9372b;
 
   --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -26,7 +25,7 @@
 @layer base {
   body {
     @apply bg-paper text-ink antialiased;
-    background-image: radial-gradient(circle at 15% 0%, rgba(18,160,85,.07), transparent 26rem), radial-gradient(circle at 90% 25%, rgba(232,184,91,.08), transparent 22rem);
+    background-image: radial-gradient(circle at 8% 0%, rgba(240,100,81,.13), transparent 28rem), radial-gradient(circle at 100% 18%, rgba(31,41,62,.08), transparent 30rem);
   }
 
   button, a, input, textarea {

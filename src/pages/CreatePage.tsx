@@ -147,10 +147,33 @@ export default function CreatePage() {
 
   return (
     <>
-      <h1 className="text-[22px] leading-7 font-semibold tracking-tight text-ink">Nueva encuesta</h1>
-      <p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p>
+      <section className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-end">
+        <div>
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-court-100 bg-court-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-court-700">
+            <span className="size-1.5 rounded-full bg-court-500" aria-hidden="true" /> Organiza sin ruido
+          </div>
+          <h1 className="max-w-xl text-4xl leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-6xl">Decidid cuándo.<br /><span className="text-court-600">Jugad más.</span></h1>
+          <p className="mt-5 max-w-md text-base leading-7 text-ink-soft">Crea una encuesta de horarios en segundos y deja que tu grupo elija el mejor momento.</p>
+          <div className="mt-7 flex flex-wrap gap-6 text-sm text-ink-soft">
+            <div><strong className="block text-xl tracking-tight text-ink">01</strong> Crea los horarios</div>
+            <div><strong className="block text-xl tracking-tight text-ink">02</strong> Comparte el enlace</div>
+            <div><strong className="block text-xl tracking-tight text-ink">03</strong> Cerrad el plan</div>
+          </div>
+        </div>
+        <div className="rounded-[2rem] border border-ink bg-ink p-6 text-white shadow-[0_24px_60px_rgba(21,25,35,.18)] sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Tu próxima decisión</p>
+          <p className="mt-5 text-2xl font-semibold tracking-tight">¿Cuándo nos vemos?</p>
+          <div className="mt-6 grid gap-2">
+            <div className="flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3"><span className="text-sm text-white/80">Jueves · 19:30</span><span className="rounded-full bg-court-500 px-2.5 py-1 text-xs font-bold">8 votos</span></div>
+            <div className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3"><span className="text-sm text-white/60">Viernes · 20:00</span><span className="text-xs text-white/40">5 votos</span></div>
+          </div>
+          <p className="mt-6 text-xs text-white/40">Una vista clara para grupos que quieren avanzar.</p>
+        </div>
+      </section>
 
-      <div className="mt-5 space-y-4">
+      <div className="mx-auto mt-14 max-w-2xl rounded-[2rem] border border-line bg-white p-5 shadow-[0_16px_40px_rgba(21,25,35,.06)] sm:p-8">
+        <div className="mb-6 flex items-end justify-between gap-4"><div><h2 className="text-xl font-bold tracking-tight text-ink">Nueva encuesta</h2><p className="mt-1 text-sm text-ink-soft">Añade los horarios y comparte un enlace con el grupo.</p></div><span className="hidden rounded-full bg-paper px-3 py-1.5 text-xs font-bold text-ink-faint sm:inline-flex">Paso 1 de 1</span></div>
+        <div className="space-y-4">
         <label className="block">
           <Label>Título</Label>
           <Input
@@ -264,6 +287,7 @@ export default function CreatePage() {
         <Button type="button" className="h-12 w-full" disabled={creating} onClick={() => void submit()}>
           {creating ? 'Creando…' : 'Crear encuesta'}
         </Button>
+        </div>
       </div>
     </>
   )
